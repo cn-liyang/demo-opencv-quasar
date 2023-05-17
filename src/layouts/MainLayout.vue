@@ -11,5 +11,6 @@ const [leftDrawerToggled, leftDrawerToggle] = useToggle();
         <router-view />
       </q-page>
     </q-page-container>
+    <MainLayoutFooter />
   </q-layout>
 </template>
