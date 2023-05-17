@@ -6,6 +6,6 @@ defineProps<{
 
 <template>
   <q-card>
-    <q-img :id="$htmlImageElementId" :src="src" block />
+    <img :id="$htmlImageElementId" :src="src" alt="No Image" />
   </q-card>
 </template>
