@@ -1,0 +1,35 @@
+.idea/
+.quasar/
+dist/
+public/
+
+.editorconfig
+.eslintignore
+.eslintrc.js
+.gitignore
+.gitkeep
+.npmrc
+package.json
+postcss.config.js
+
+*.md
+*.sh
+*.yml
+*.svg
+*.gif
+
+CNAME
+LICENSE
+Dockerfile
+.env
+.env.*
+
+# Package lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Auto import files
+.eslintrc-auto-import.json
+auto-imports.d.ts
+components.d.ts

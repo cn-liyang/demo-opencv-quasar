@@ -1,0 +1,10 @@
+.idea/
+.quasar/
+dist/
+src-capacitor/
+src-cordova/
+public/
+node_modules/
+src-ssr/
+
+.eslintrc.js
