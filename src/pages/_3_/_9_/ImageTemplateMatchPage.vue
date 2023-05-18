@@ -1,30 +1,23 @@
 <script lang="ts" setup>
 const inputId = "inputId";
+const inputTpltId = "inputTpltId";
 const outputId = "outputId";
 
 function doCv() {
   const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
-  const dst = cvObj.Mat.zeros(src.cols, src.rows, cvObj.CV_8UC3);
-  cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2GRAY, 0);
-  cvObj.threshold(src, src, 120, 200, cvObj.THRESH_BINARY);
-  const contours = new cvObj.MatVector();
-  const hierarchy = new cvObj.Mat();
-  cvObj.findContours(src, contours, hierarchy, cvObj.RETR_CCOMP, cvObj.CHAIN_APPROX_SIMPLE);
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  for (let i = 0; i < contours.size(); ++i) {
-    const color = new cvObj.Scalar(
-      Math.round(Math.random() * 255),
-      Math.round(Math.random() * 255),
-      Math.round(Math.random() * 255)
-    );
-    cvObj.drawContours(dst, contours, i, color, 1, cvObj.LINE_8, hierarchy, 100);
-  }
+  const templ = cvObj.imread(document.getElementById(inputTpltId) as HTMLImageElement);
+  const dst = new cvObj.Mat();
+  const mask = new cvObj.Mat();
+  cvObj.matchTemplate(src, templ, dst, cvObj.TM_CCOEFF, mask);
+  const result = cvObj.minMaxLoc(dst, mask);
+  const maxPoint = result.maxLoc;
+  const color = new cvObj.Scalar(255, 0, 0, 255);
+  const point = new cvObj.Point(maxPoint.x + templ.cols, maxPoint.y + templ.rows);
+  cvObj.rectangle(src, maxPoint, point, color, 2, cvObj.LINE_8, 0);
   cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
-  contours.delete();
-  hierarchy.delete();
+  mask.delete();
 }
 </script>
 
@@ -32,6 +25,7 @@ function doCv() {
   <div class="column items-center q-gutter-y-md">
     <ActionButton @action="doCv" />
     <InputImage :src="$getAssetsImage('lena.png')" :id="inputId" />
+    <InputImage :src="$getAssetsImage('lena-tplt.png')" :id="inputTpltId" />
     <OutputCanvas :id="outputId" />
   </div>
 </template>
