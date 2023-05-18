@@ -1,18 +1,21 @@
 <script lang="ts" setup>
-function cvCvtColor() {
+function doCv() {
   const src = cvObj.imread(document.getElementById(ID_HTML_IMAGE_ELEMENT) as HTMLImageElement);
   const dst = new cvObj.Mat();
-  cvObj.cvtColor(src, dst, cvObj.COLOR_RGBA2GRAY);
+  cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2RGB);
+  const M = cvObj.Mat.ones(9, 9, cvObj.CV_8U);
+  cvObj.morphologyEx(src, dst, cvObj.MORPH_TOPHAT, M);
   cvObj.imshow(document.getElementById(ID_HTML_CANVAS_ELEMENT) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
+  M.delete();
 }
 </script>
 
 <template>
   <div class="column items-center q-gutter-y-md">
-    <q-btn color="primary" label="灰度" outline rounded @click.prevent="cvCvtColor" />
-    <InputImage :src="$getAssetsImage('lena.png')" />
+    <ActionButton @action="doCv" />
+    <InputImage :src="$getAssetsImage('star.png')" />
     <OutputCanvas />
   </div>
 </template>

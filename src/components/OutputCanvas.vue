@@ -1,7 +1,11 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+defineProps<{
+  id: string;
+}>();
+</script>
 
 <template>
   <CardLayout>
-    <canvas :id="$htmlCanvasElementId" />
+    <canvas :id="id" />
   </CardLayout>
 </template>

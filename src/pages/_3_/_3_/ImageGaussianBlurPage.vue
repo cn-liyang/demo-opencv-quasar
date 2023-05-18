@@ -1,18 +1,22 @@
 <script lang="ts" setup>
-function cvCvtColor() {
+function doCv() {
   const src = cvObj.imread(document.getElementById(ID_HTML_IMAGE_ELEMENT) as HTMLImageElement);
   console.log(
     "src image properties:" +
-      `\nwidth: ${src.cols},` +
-      `\nheight: ${src.rows},` +
       `\nsize: ${src.size().width}*${src.size().height},` +
       `\ndepth: ${src.depth()},` +
       `\nchannels: ${src.channels()},` +
       `\ntype: ${src.type()}`
   );
-  const rect = new cvObj.Rect(100, 100, 100, 100);
-  const clo = src.clone();
-  const dst = clo.roi(rect);
+  const dst = new cvObj.Mat();
+  cvObj.GaussianBlur(src, dst, new cvObj.Size(3, 3), 0, 0, cvObj.BORDER_DEFAULT);
+  console.log(
+    "dst image properties:" +
+      `\nsize: ${dst.size().width}*${dst.size().height},` +
+      `\ndepth: ${dst.depth()},` +
+      `\nchannels: ${dst.channels()},` +
+      `\ntype: ${dst.type()}`
+  );
   cvObj.imshow(document.getElementById(ID_HTML_CANVAS_ELEMENT) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
@@ -21,7 +25,7 @@ function cvCvtColor() {
 
 <template>
   <div class="column items-center q-gutter-y-md">
-    <q-btn color="primary" label="截图" outline rounded @click.prevent="cvCvtColor" />
+    <ActionButton @action="doCv" />
     <InputImage :src="$getAssetsImage('lena.png')" />
     <OutputCanvas />
   </div>
