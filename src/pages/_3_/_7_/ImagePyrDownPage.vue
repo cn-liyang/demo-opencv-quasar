@@ -1,9 +1,12 @@
 <script lang="ts" setup>
+const inputId = "inputId";
+const outputId = "outputId";
+
 function doCv() {
-  const src = cvObj.imread(document.getElementById(ID_HTML_IMAGE_ELEMENT) as HTMLImageElement);
+  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
   const dst = new cvObj.Mat();
   cvObj.pyrDown(src, dst, new cvObj.Size(0, 0), cvObj.BORDER_DEFAULT);
-  cvObj.imshow(document.getElementById(ID_HTML_CANVAS_ELEMENT) as HTMLCanvasElement, dst);
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
 }
@@ -12,7 +15,7 @@ function doCv() {
 <template>
   <div class="column items-center q-gutter-y-md">
     <ActionButton @action="doCv" />
-    <InputImage :src="$getAssetsImage('lena.png')" />
-    <OutputCanvas />
+    <InputImage :src="$getAssetsImage('lena.png')" :id="inputId" />
+    <OutputCanvas :id="outputId" />
   </div>
 </template>
