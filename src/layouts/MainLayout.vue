@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 const [leftDrawerToggled, leftDrawerToggle] = useToggle();
+const { qPageElement } = useQPageElement();
+const { getQPageElementHeight } = useQPageElementGlobalSessionStorage();
 </script>
 
 <template>
@@ -7,8 +9,10 @@ const [leftDrawerToggled, leftDrawerToggle] = useToggle();
     <MainLayoutHeader @action="leftDrawerToggle" />
     <MainLayoutDrawerLeft v-model="leftDrawerToggled" />
     <q-page-container>
-      <q-page padding>
-        <router-view />
+      <q-page ref="qPageElement" padding>
+        <q-scroll-area :style="`height: ${getQPageElementHeight()}px`">
+          <router-view />
+        </q-scroll-area>
       </q-page>
     </q-page-container>
     <MainLayoutFooter />

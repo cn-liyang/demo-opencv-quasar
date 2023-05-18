@@ -3,7 +3,7 @@
 <template>
   <q-drawer behavior="desktop" elevated overlay>
     <q-list>
-      <q-item v-for="i in $mainChildren" :key="i.path" v-ripple :to="i.path" clickable exact>
+      <q-item v-for="i in $routeMainChildren" :key="i.path" v-ripple :to="i.path" clickable exact>
         <q-item-section v-if="i.meta?.icon" avatar>
           <q-icon :name="i.meta.icon" />
         </q-item-section>

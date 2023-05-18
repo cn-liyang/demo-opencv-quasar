@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <q-card>
+  <CardLayout>
     <canvas :id="$htmlCanvasElementId" />
-  </q-card>
+  </CardLayout>
 </template>

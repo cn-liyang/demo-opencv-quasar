@@ -1,11 +1,11 @@
-import { EMimeImageType } from "src/boot/enums/mime";
+import { EMimeImageType } from "boot/enums/mime";
 
 function _resizeRect(fromWidth: number, fromHeight: number) {
   const fromRatio = fromWidth / fromHeight;
-  if (fromRatio > RECT_INCH6_RATIO) {
-    return { toWidth: RECT_INCH6_WIDTH, toHeight: RECT_INCH6_HEIGHT * fromRatio };
+  if (fromRatio > SIZE_INCH6_RATIO) {
+    return { toWidth: SIZE_INCH6_WIDTH, toHeight: SIZE_INCH6_HEIGHT * fromRatio };
   } else {
-    return { toWidth: RECT_INCH6_WIDTH / fromRatio, toHeight: RECT_INCH6_HEIGHT };
+    return { toWidth: SIZE_INCH6_WIDTH / fromRatio, toHeight: SIZE_INCH6_HEIGHT };
   }
 }
 

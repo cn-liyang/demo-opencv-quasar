@@ -6,8 +6,8 @@ export default function () {
     const mat = cv.imread(iHtmlCanvasElement);
     const src = mat.data;
     console.log("data", src);
-    const rect = mat.size();
-    console.log("size", rect);
+    const size = mat.size();
+    console.log("size", size);
     const oHtmlCanvasElement = document.getElementById(ID_HTML_CANVAS_ELEMENT) as HTMLCanvasElement;
     cv.imshow(oHtmlCanvasElement, mat);
     mat.delete();

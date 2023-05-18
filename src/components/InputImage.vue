@@ -5,7 +5,7 @@ defineProps<{
 </script>
 
 <template>
-  <q-card>
-    <img :id="$htmlImageElementId" :src="src" alt="No Image" />
-  </q-card>
+  <CardLayout>
+    <img :id="$htmlImageElementId" :src="src" alt="Input Image" />
+  </CardLayout>
 </template>

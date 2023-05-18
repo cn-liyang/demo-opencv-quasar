@@ -28,7 +28,7 @@ module.exports = configure(function (/* ctx */) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
-    boot: ["axios", "i18n", "mime", "opencv", "pica", "route"],
+    boot: ["axios", "consts", "funs", "i18n", "opencv", "pica"],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
     css: ["app.scss"],
@@ -97,7 +97,7 @@ module.exports = configure(function (/* ctx */) {
               "pinia",
               "@vueuse/core",
               {
-                "@vueuse/core": [["get", "getRef"], ["set", "setRef"], "invoke"],
+                "@vueuse/core": [["get", "getRef"], ["set", "setRef"], "invoke", "toValue"],
               },
               "quasar",
             ],
