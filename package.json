@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
-    "@techstark/opencv-js": "^4.7.0-release.1",
     "@vueuse/core": "^10.1.2",
     "axios": "^1.2.1",
     "image-blob-reduce": "^4.1.0",
