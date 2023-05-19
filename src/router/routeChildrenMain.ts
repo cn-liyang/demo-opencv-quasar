@@ -162,8 +162,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-5-1",
-    component: () => import("pages/_3_/_5_/ImageErodePage.vue"),
+    path: "161",
+    component: () => import("pages/_1_image/_6_morphology/Image1ErodePage.vue"),
     meta: {
       title: "图像形态腐蚀",
       caption: "Image Erode Example",
@@ -172,8 +172,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-5-2",
-    component: () => import("pages/_3_/_5_/ImageDilatePage.vue"),
+    path: "162",
+    component: () => import("pages/_1_image/_6_morphology/Image2DilatePage.vue"),
     meta: {
       title: "图像形态膨胀",
       caption: "Image Dilate Example",
@@ -182,8 +182,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-5-3",
-    component: () => import("pages/_3_/_5_/ImageOpeningPage.vue"),
+    path: "163",
+    component: () => import("pages/_1_image/_6_morphology/Image3OpeningPage.vue"),
     meta: {
       title: "图像形态正开",
       caption: "开运算 = 先腐蚀，再膨胀",
@@ -192,8 +192,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-5-4",
-    component: () => import("pages/_3_/_5_/ImageClosingPage.vue"),
+    path: "164",
+    component: () => import("pages/_1_image/_6_morphology/Image4ClosingPage.vue"),
     meta: {
       title: "图像形态逆闭",
       caption: "闭运算 = 先膨胀，再腐蚀",
@@ -202,8 +202,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-5-5",
-    component: () => import("pages/_3_/_5_/ImageGradientPage.vue"),
+    path: "165",
+    component: () => import("pages/_1_image/_6_morphology/Image5GradientPage.vue"),
     meta: {
       title: "图像形态梯度",
       caption: "梯度运算 = 膨胀结果 - 腐蚀结果",
@@ -212,8 +212,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-5-6",
-    component: () => import("pages/_3_/_5_/ImageHatPage.vue"),
+    path: "166",
+    component: () => import("pages/_1_image/_6_morphology/Image6HatPage.vue"),
     meta: {
       title: "图像形态礼帽",
       caption: "礼帽运算 = 原始输入 - 开运算结果",
@@ -222,8 +222,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-5-7",
-    component: () => import("pages/_3_/_5_/ImageBlackHatPage.vue"),
+    path: "167",
+    component: () => import("pages/_1_image/_6_morphology/Image7BlackHatPage.vue"),
     meta: {
       title: "图像形态黑帽",
       caption: "黑帽运算 = 闭运算结果 - 原始输入",
@@ -232,8 +232,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-5-8",
-    component: () => import("pages/_3_/_5_/ImageGradientStructuringElementPage.vue"),
+    path: "168",
+    component: () => import("pages/_1_image/_6_morphology/Image8GradientStructuringElementPage.vue"),
     meta: {
       title: "图像形态结构",
       caption: "Get Structuring Element Example",
