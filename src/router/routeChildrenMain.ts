@@ -325,10 +325,40 @@ const routeChildrenMain: RouteRecordRaw[] = [
     path: "3-8-2",
     component: () => import("pages/_3_/_8_/ImageContoursApproxPolyDPPage.vue"),
     meta: {
-      title: "图像边缘近似",
+      title: "图像边缘近似多边",
       caption: "Image ApproxPolyDP Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d5/daa/tutorial_js_contours_begin.html",
+      link: "https://docs.opencv.org/4.7.0/dc/dcf/tutorial_js_contour_features.html",
+    },
+  },
+  {
+    path: "3-8-3",
+    component: () => import("pages/_3_/_8_/ImageContoursConvexHullPage.vue"),
+    meta: {
+      title: "图像边缘凸出外壳",
+      caption: "Convex Hull Example",
+      icon: "mdi-numeric-3-box-outline",
+      link: "https://docs.opencv.org/4.7.0/dc/dcf/tutorial_js_contour_features.html",
+    },
+  },
+  {
+    path: "3-8-4",
+    component: () => import("pages/_3_/_8_/ImageContoursBoundingRectPage.vue"),
+    meta: {
+      title: "图像边缘最小矩形边框",
+      caption: "Bounding Rect Example",
+      icon: "mdi-numeric-3-box-outline",
+      link: "https://docs.opencv.org/4.7.0/dc/dcf/tutorial_js_contour_features.html",
+    },
+  },
+  {
+    path: "3-8-5",
+    component: () => import("pages/_3_/_8_/ImageContoursMinAreaRectRectPage.vue"),
+    meta: {
+      title: "图像边缘最小矩形面积",
+      caption: "Min Area Rect Example",
+      icon: "mdi-numeric-3-box-outline",
+      link: "https://docs.opencv.org/4.7.0/dc/dcf/tutorial_js_contour_features.html",
     },
   },
   {

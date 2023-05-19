@@ -10,29 +10,20 @@ function doCv() {
   const contours = new cvObj.MatVector();
   const hierarchy = new cvObj.Mat();
   cvObj.findContours(src, contours, hierarchy, cvObj.RETR_CCOMP, cvObj.CHAIN_APPROX_SIMPLE);
-  const poly = new cvObj.MatVector();
-  for (let i = 0; i < contours.size(); ++i) {
-    const tmp = new cvObj.Mat();
-    const cnt = contours.get(i);
-    cvObj.approxPolyDP(cnt, tmp, 3, true); // core
-    poly.push_back(tmp);
-    cnt.delete();
-    tmp.delete();
-  }
-  for (let i = 0; i < contours.size(); ++i) {
-    const color = new cvObj.Scalar(
-      Math.round(Math.random() * 255),
-      Math.round(Math.random() * 255),
-      Math.round(Math.random() * 255)
-    );
-    cvObj.drawContours(dst, poly, i, color, 1, cvObj.LINE_8, hierarchy, 0);
-  }
+  const cnt = contours.get(0);
+  const rect = cvObj.boundingRect(cnt); // core
+  const contoursColor = new cvObj.Scalar(0, 255, 0);
+  const rectangleColor = new cvObj.Scalar(255, 0, 0);
+  cvObj.drawContours(dst, contours, 0, contoursColor, 1, cvObj.LINE_8, hierarchy, 100);
+  const point1 = new cvObj.Point(rect.x, rect.y);
+  const point2 = new cvObj.Point(rect.x + rect.width, rect.y + rect.height);
+  cvObj.rectangle(dst, point1, point2, rectangleColor, 1, cvObj.LINE_AA, 0);
   cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
   contours.delete();
   hierarchy.delete();
-  poly.delete();
+  cnt.delete();
 }
 </script>
 

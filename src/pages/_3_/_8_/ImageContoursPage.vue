@@ -29,7 +29,7 @@ function doCv() {
 <template>
   <div class="column items-center q-gutter-y-md">
     <ActionButton @action="doCv" />
-    <InputImage :id="inputId" :src="$getAssetsImage('lena.png')" />
+    <InputImage :id="inputId" :src="$getAssetsImage('star.png')" />
     <OutputCanvas :id="outputId" />
   </div>
 </template>
