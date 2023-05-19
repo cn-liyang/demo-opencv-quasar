@@ -5,7 +5,7 @@ const outputId = "outputId";
 function doCv() {
   const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
   const dst = new cvObj.Mat();
-  const M = cvObj.Mat.ones(5, 5, cvObj.CV_8U);
+  const M = new cvObj.Mat.ones(5, 5, cvObj.CV_8U);
   cvObj.erode(src, dst, M, new cvObj.Point(-1, -1), 1, cvObj.BORDER_CONSTANT, cvObj.morphologyDefaultBorderValue());
   cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();

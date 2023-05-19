@@ -102,8 +102,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-3-1",
-    component: () => import("pages/_3_/_3_/ImageFilterPage.vue"),
+    path: "3-4-1",
+    component: () => import("pages/_3_/_4_/ImageFilterPage.vue"),
     meta: {
       title: "图像简单过滤",
       caption: "Image Filter Example",
@@ -112,8 +112,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-3-2",
-    component: () => import("pages/_3_/_3_/ImageAveragingBlurPage.vue"),
+    path: "3-4-2",
+    component: () => import("pages/_3_/_4_/ImageAveragingBlurPage.vue"),
     meta: {
       title: "图像均值滤波",
       caption: "Image Blur Example",
@@ -122,8 +122,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-3-3",
-    component: () => import("pages/_3_/_3_/ImageAveragingBoxFilterPage.vue"),
+    path: "3-4-3",
+    component: () => import("pages/_3_/_4_/ImageAveragingBoxFilterPage.vue"),
     meta: {
       title: "图像方框滤波",
       caption: "Image Blur Example",
@@ -132,8 +132,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-3-4",
-    component: () => import("pages/_3_/_3_/ImageGaussianBlurPage.vue"),
+    path: "3-4-4",
+    component: () => import("pages/_3_/_4_/ImageGaussianBlurPage.vue"),
     meta: {
       title: "图像高斯滤波",
       caption: "Gaussian Blur Example",
@@ -142,8 +142,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-3-5",
-    component: () => import("pages/_3_/_3_/ImageMedianBlurPage.vue"),
+    path: "3-4-5",
+    component: () => import("pages/_3_/_4_/ImageMedianBlurPage.vue"),
     meta: {
       title: "图像中值滤波",
       caption: "Median Blur Example",
@@ -152,8 +152,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-3-6",
-    component: () => import("pages/_3_/_3_/ImageBilateralFilterPage.vue"),
+    path: "3-4-6",
+    component: () => import("pages/_3_/_4_/ImageBilateralFilterPage.vue"),
     meta: {
       title: "图像双边滤波",
       caption: "Bilateral Filter Example",
@@ -162,8 +162,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-4-1",
-    component: () => import("pages/_3_/_4_/ImageErodePage.vue"),
+    path: "3-5-1",
+    component: () => import("pages/_3_/_5_/ImageErodePage.vue"),
     meta: {
       title: "图像形态腐蚀",
       caption: "Image Erode Example",
@@ -172,8 +172,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-4-2",
-    component: () => import("pages/_3_/_4_/ImageDilatePage.vue"),
+    path: "3-5-2",
+    component: () => import("pages/_3_/_5_/ImageDilatePage.vue"),
     meta: {
       title: "图像形态膨胀",
       caption: "Image Dilate Example",
@@ -182,8 +182,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-4-3",
-    component: () => import("pages/_3_/_4_/ImageOpeningPage.vue"),
+    path: "3-5-3",
+    component: () => import("pages/_3_/_5_/ImageOpeningPage.vue"),
     meta: {
       title: "图像形态正开",
       caption: "开运算 = 先腐蚀，再膨胀",
@@ -192,8 +192,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-4-4",
-    component: () => import("pages/_3_/_4_/ImageClosingPage.vue"),
+    path: "3-5-4",
+    component: () => import("pages/_3_/_5_/ImageClosingPage.vue"),
     meta: {
       title: "图像形态逆闭",
       caption: "闭运算 = 先膨胀，再腐蚀",
@@ -202,8 +202,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-4-5",
-    component: () => import("pages/_3_/_4_/ImageGradientPage.vue"),
+    path: "3-5-5",
+    component: () => import("pages/_3_/_5_/ImageGradientPage.vue"),
     meta: {
       title: "图像形态梯度",
       caption: "梯度运算 = 膨胀结果 - 腐蚀结果",
@@ -212,8 +212,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-4-6",
-    component: () => import("pages/_3_/_4_/ImageHatPage.vue"),
+    path: "3-5-6",
+    component: () => import("pages/_3_/_5_/ImageHatPage.vue"),
     meta: {
       title: "图像形态礼帽",
       caption: "礼帽运算 = 原始输入 - 开运算结果",
@@ -222,8 +222,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-4-7",
-    component: () => import("pages/_3_/_4_/ImageBlackHatPage.vue"),
+    path: "3-5-7",
+    component: () => import("pages/_3_/_5_/ImageBlackHatPage.vue"),
     meta: {
       title: "图像形态黑帽",
       caption: "黑帽运算 = 闭运算结果 - 原始输入",
@@ -232,8 +232,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-4-8",
-    component: () => import("pages/_3_/_4_/ImageGradientStructuringElementPage.vue"),
+    path: "3-5-8",
+    component: () => import("pages/_3_/_5_/ImageGradientStructuringElementPage.vue"),
     meta: {
       title: "图像形态结构",
       caption: "Get Structuring Element Example",

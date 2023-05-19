@@ -6,8 +6,8 @@ function doCv() {
   const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
   const dst = new cvObj.Mat();
   cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2RGB);
-  const M = cvObj.Mat.ones(9, 9, cvObj.CV_8U);
-  cvObj.morphologyEx(src, dst, cvObj.MORPH_TOPHAT, M);
+  const M = new cvObj.Mat.ones(5, 5, cvObj.CV_8U);
+  cvObj.morphologyEx(src, dst, cvObj.MORPH_GRADIENT, M);
   cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
