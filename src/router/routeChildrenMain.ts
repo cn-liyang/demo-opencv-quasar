@@ -2,8 +2,8 @@ import { RouteRecordRaw } from "vue-router";
 
 const routeChildrenMain: RouteRecordRaw[] = [
   {
-    path: "0",
-    component: () => import("pages/_0_/HelloOpenCVPage.vue"),
+    path: "01",
+    component: () => import("pages/_0_intro/HelloOpenCVPage.vue"),
     meta: {
       title: "入门",
       caption: "Hello OpenCV.js",
@@ -12,8 +12,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "1",
-    component: () => import("pages/_1_/ImageIOPage.vue"),
+    path: "02",
+    component: () => import("pages/_0_intro/ImageIOPage.vue"),
     meta: {
       title: "图像 IO（灰度）",
       caption: "Image Read and Show Example",
@@ -22,8 +22,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "2",
-    component: () => import("pages/_2_/ImageROIPage.vue"),
+    path: "11",
+    component: () => import("pages/_1_image/_1_core/ImageROIPage.vue"),
     meta: {
       title: "图像区域截图",
       caption: "Image ROI Example",
@@ -32,8 +32,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-1",
-    component: () => import("pages/_3_/_1_/ImageInRangePage.vue"),
+    path: "12",
+    component: () => import("pages/_1_image/_2_color/ImageInRangePage.vue"),
     meta: {
       title: "图像色彩变更",
       caption: "Image InRange Example",
@@ -42,8 +42,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-2-1",
-    component: () => import("pages/_3_/_2_/ImageResizePage.vue"),
+    path: "131",
+    component: () => import("pages/_1_image/_3_geometry/Image1ResizePage.vue"),
     meta: {
       title: "图像缩放变换",
       caption: "Image Resize Example",
@@ -52,8 +52,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-2-2",
-    component: () => import("pages/_3_/_2_/ImageRotateTransformPage.vue"),
+    path: "132",
+    component: () => import("pages/_1_image/_3_geometry/Image2RotateTransformPage.vue"),
     meta: {
       title: "图像旋转变换",
       caption: "Rotate Transform Example",
@@ -62,8 +62,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-2-3",
-    component: () => import("pages/_3_/_2_/ImageAffineTransformPage.vue"),
+    path: "133",
+    component: () => import("pages/_1_image/_3_geometry/Image3AffineTransformPage.vue"),
     meta: {
       title: "图像仿射变换",
       caption: "Get Affine Transform Example",
@@ -72,11 +72,11 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-2-4",
-    component: () => import("pages/_3_/_2_/ImagePerspectivTransformPage.vue"),
+    path: "134",
+    component: () => import("pages/_1_image/_3_geometry/Image4PerspectiveTransformPage.vue"),
     meta: {
       title: "图像透视变换",
-      caption: "Perspectiv Transform Example",
+      caption: "Perspective Transform Example",
       icon: "mdi-numeric-3-box-outline",
       link: "https://docs.opencv.org/4.5.0/dd/d52/tutorial_js_geometric_transformations.html",
     },
