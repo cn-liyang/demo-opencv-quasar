@@ -312,8 +312,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "4-1",
-    component: () => import("pages/_4_/_1_/ImageContoursPage.vue"),
+    path: "1a1",
+    component: () => import("pages/_1_image/_a_contour/Image1ContoursPage.vue"),
     meta: {
       title: "图像边缘检测",
       caption: "Image Contours Example",
@@ -322,8 +322,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "4-2-1",
-    component: () => import("pages/_4_/_2_/ImageContoursApproxPolyDPPage.vue"),
+    path: "1a2",
+    component: () => import("pages/_1_image/_a_contour/Image2ContoursApproxPolyDPPage.vue"),
     meta: {
       title: "图像边缘近似多边",
       caption: "Image ApproxPolyDP Example",
@@ -332,8 +332,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "4-2-2",
-    component: () => import("pages/_4_/_2_/ImageContoursConvexHullPage.vue"),
+    path: "1a3",
+    component: () => import("pages/_1_image/_a_contour/Image3ContoursConvexHullPage.vue"),
     meta: {
       title: "图像边缘凸出外壳",
       caption: "Convex Hull Example",
@@ -342,8 +342,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "4-2-3",
-    component: () => import("pages/_4_/_2_/ImageContoursBoundingRectPage.vue"),
+    path: "1a4",
+    component: () => import("pages/_1_image/_a_contour/Image4ContoursBoundingRectPage.vue"),
     meta: {
       title: "图像边缘最小矩形",
       caption: "Bounding Rect Example",
@@ -352,8 +352,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "4-2-4",
-    component: () => import("pages/_4_/_2_/ImageContoursMinAreaRectPage.vue"),
+    path: "1a5",
+    component: () => import("pages/_1_image/_a_contour/Image5ContoursMinAreaRectPage.vue"),
     meta: {
       title: "图像边缘最小矩面",
       caption: "Min Area Rect Example",
@@ -362,8 +362,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "4-2-5",
-    component: () => import("pages/_4_/_2_/ImageContoursMinEnclosingCirclePage.vue"),
+    path: "1a6",
+    component: () => import("pages/_1_image/_a_contour/Image6ContoursMinEnclosingCirclePage.vue"),
     meta: {
       title: "图像边缘最小圆形",
       caption: "Min Enclosing Circle Example",
@@ -372,8 +372,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "4-2-6",
-    component: () => import("pages/_4_/_2_/ImageContoursFitEllipsePage.vue"),
+    path: "1a7",
+    component: () => import("pages/_1_image/_a_contour/Image7ContoursFitEllipsePage.vue"),
     meta: {
       title: "图像边缘拟合椭圆",
       caption: "Fit Ellipse Example",
@@ -382,8 +382,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "4-2-7",
-    component: () => import("pages/_4_/_2_/ImageContoursFitLinePage.vue"),
+    path: "1a8",
+    component: () => import("pages/_1_image/_a_contour/Image8ContoursFitLinePage.vue"),
     meta: {
       title: "图像边缘拟合直线",
       caption: "Fit Line Example",
@@ -392,8 +392,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "4-3",
-    component: () => import("pages/_4_/_3_/ImageTransposePage.vue"),
+    path: "1a",
+    component: () => import("pages/_1_image/_a_contour/ImageTransposePage.vue"),
     meta: {
       title: "图像转置",
       caption: "Image Transpose Example",
@@ -402,88 +402,88 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "5-1",
-    component: () => import("pages/_5_/ImageHoughLinesPage.vue"),
+    path: "1b1",
+    component: () => import("pages/_1_image/_b_hough/Image1HoughLinesPage.vue"),
     meta: {
       title: "图像霍夫线变换",
       caption: "Hough Lines Example",
-      icon: "mdi-numeric-5-box-outline",
+      icon: "mdi-numeric-1bbox-outline",
       link: "https://docs.opencv.org/4.5.0/d3/de6/tutorial_js_houghlines.html",
     },
   },
   {
-    path: "5-2",
-    component: () => import("pages/_5_/ImageHoughLinesPPage.vue"),
+    path: "1b2",
+    component: () => import("pages/_1_image/_b_hough/Image2HoughLinesPPage.vue"),
     meta: {
       title: "图像概率霍夫线变换",
       caption: "Image HoughLinesP Example",
-      icon: "mdi-numeric-5-box-outline",
+      icon: "mdi-numeric-1bbox-outline",
       link: "https://docs.opencv.org/4.5.0/d3/de6/tutorial_js_houghlines.html",
     },
   },
   {
-    path: "5-3",
-    component: () => import("pages/_5_/ImageHoughCirclesPage.vue"),
+    path: "1b3",
+    component: () => import("pages/_1_image/_b_hough/Image3HoughCirclesPage.vue"),
     meta: {
       title: "图像霍夫圆变换",
       caption: "Hough Circles Example",
-      icon: "mdi-numeric-5-box-outline",
+      icon: "mdi-numeric-1bbox-outline",
       link: "https://docs.opencv.org/4.5.0/d3/de5/tutorial_js_houghcircles.html",
     },
   },
   {
-    path: "6-1",
-    component: () => import("pages/_6_/ImageThresholdPage.vue"),
+    path: "1c1",
+    component: () => import("pages/_1_image/_c_segment/Image1ThresholdPage.vue"),
     meta: {
       title: "图像分割阈值",
       caption: "Image Threshold Example",
-      icon: "mdi-numeric-6-box-outline",
+      icon: "mdi-numeric-1cbox-outline",
       link: "https://docs.opencv.org/4.5.0/d7/d1c/tutorial_js_watershed.html",
     },
   },
   {
-    path: "6-2",
-    component: () => import("pages/_6_/ImageBackgroundPage.vue"),
+    path: "1c2",
+    component: () => import("pages/_1_image/_c_segment/Image2BackgroundPage.vue"),
     meta: {
       title: "图像分割背景",
       caption: "Image Background Example",
-      icon: "mdi-numeric-6-box-outline",
+      icon: "mdi-numeric-1cbox-outline",
       link: "https://docs.opencv.org/4.5.0/d7/d1c/tutorial_js_watershed.html",
     },
   },
   {
-    path: "6-3",
-    component: () => import("pages/_6_/ImageForegroundPage.vue"),
+    path: "1c3",
+    component: () => import("pages/_1_image/_c_segment/Image3ForegroundPage.vue"),
     meta: {
       title: "图像分割前景",
       caption: "Image Foreground Example",
-      icon: "mdi-numeric-6-box-outline",
+      icon: "mdi-numeric-1cbox-outline",
       link: "https://docs.opencv.org/4.5.0/d7/d1c/tutorial_js_watershed.html",
     },
   },
   {
-    path: "6-4",
-    component: () => import("pages/_6_/ImageDistanceTransformPage.vue"),
+    path: "1c4",
+    component: () => import("pages/_1_image/_c_segment/Image4DistanceTransformPage.vue"),
     meta: {
       title: "图像分割距离变换",
       caption: "Distance Transform Example",
-      icon: "mdi-numeric-6-box-outline",
+      icon: "mdi-numeric-1cbox-outline",
       link: "https://docs.opencv.org/4.5.0/d7/d1c/tutorial_js_watershed.html",
     },
   },
   {
-    path: "6-5",
-    component: () => import("pages/_6_/ImageWatershedPage.vue"),
+    path: "1c5",
+    component: () => import("pages/_1_image/_c_segment/Image5WatershedPage.vue"),
     meta: {
       title: "图像分割分水岭",
       caption: "Image Watershed Example",
-      icon: "mdi-numeric-6-box-outline",
+      icon: "mdi-numeric-1cbox-outline",
       link: "https://docs.opencv.org/4.5.0/d7/d1c/tutorial_js_watershed.html",
     },
   },
   {
-    path: "7",
-    component: () => import("pages/_7_/ImageTemplateMatchPage.vue"),
+    path: "1d",
+    component: () => import("pages/_1_image/_d_template/ImageTemplateMatchPage.vue"),
     meta: {
       title: "图像模版匹配",
       caption: "Template Match Example",
