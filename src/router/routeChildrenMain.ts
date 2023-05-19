@@ -435,8 +435,18 @@ const routeChildrenMain: RouteRecordRaw[] = [
     path: "6-1",
     component: () => import("pages/_6_/ImageThresholdPage.vue"),
     meta: {
-      title: "图像模版匹配",
+      title: "图像分割分水岭阈值",
       caption: "Image Threshold Example",
+      icon: "mdi-numeric-6-box-outline",
+      link: "https://docs.opencv.org/4.5.0/d7/d1c/tutorial_js_watershed.html",
+    },
+  },
+  {
+    path: "6-2",
+    component: () => import("pages/_6_/ImageBackgroundPage.vue"),
+    meta: {
+      title: "图像分割分水岭背景",
+      caption: "Image Background Example",
       icon: "mdi-numeric-6-box-outline",
       link: "https://docs.opencv.org/4.5.0/d7/d1c/tutorial_js_watershed.html",
     },
