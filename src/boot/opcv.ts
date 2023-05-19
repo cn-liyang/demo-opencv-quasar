@@ -1,13 +1,14 @@
 import { boot } from "quasar/wrappers";
-import cv from "@techstark/opencv-js";
 
 declare module "@vue/runtime-core" {
   interface ComponentCustomProperties {
-    $cvObj: typeof cv;
+    $cvObj: typeof cvObj;
   }
 }
 
 const cvObj = cv;
+console.log("cv", cv);
+console.log("cvObj", cvObj);
 
 export default boot(({ app }) => {
   app.config.globalProperties.$cvObj = cvObj;

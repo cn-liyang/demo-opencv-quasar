@@ -28,7 +28,7 @@ module.exports = configure(function (/* ctx */) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
-    boot: ["axios", "consts", "funs", "i18n", "opencv", "pica"],
+    boot: ["axios", "consts", "funs", "i18n", "open", "pica"],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
     css: ["app.scss"],
@@ -74,6 +74,12 @@ module.exports = configure(function (/* ctx */) {
       // viteVuePluginOptions: {},
 
       vitePlugins: [
+        [
+          "opencv.js",
+          {
+            include: path.resolve(__dirname, "./src/assets/libs/opencv.js"),
+          },
+        ],
         [
           "@intlify/vite-plugin-vue-i18n",
           {
