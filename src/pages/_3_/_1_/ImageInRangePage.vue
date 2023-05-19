@@ -11,8 +11,8 @@ function doCv() {
       `\nchannels: ${src.channels()},` +
       `\ntype: ${src.type()}`
   );
-  const lowerb = new cvObj.Mat(src.rows, src.cols, src.type(), [0, 0, 0, 0]);
-  const upperb = new cvObj.Mat(src.rows, src.cols, src.type(), [150, 150, 150, 255]);
+  const lowerb = new cvObj.Mat(src.rows, src.cols, src.type(), new cvObj.Scalar(0, 0, 0, 0));
+  const upperb = new cvObj.Mat(src.rows, src.cols, src.type(), new cvObj.Scalar(150, 150, 150, 255));
   const dst = new cvObj.Mat();
   cvObj.inRange(src, lowerb, upperb, dst);
   console.log(
