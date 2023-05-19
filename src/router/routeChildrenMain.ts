@@ -393,12 +393,32 @@ const routeChildrenMain: RouteRecordRaw[] = [
   },
   {
     path: "4-3",
-    component: () => import("pages/_4_/_2_/ImageTransposePage.vue"),
+    component: () => import("pages/_4_/_3_/ImageTransposePage.vue"),
     meta: {
       title: "图像转置",
       caption: "Image Transpose Example",
       icon: "mdi-numeric-4-box-outline",
       link: "https://docs.opencv.org/4.5.0/da/dc1/tutorial_js_contour_properties.html",
+    },
+  },
+  {
+    path: "5-1",
+    component: () => import("pages/_5_/ImageHoughLinesPage.vue"),
+    meta: {
+      title: "图像简单霍夫线变换",
+      caption: "Hough Lines Example",
+      icon: "mdi-numeric-5-box-outline",
+      link: "https://docs.opencv.org/4.5.0/d3/de6/tutorial_js_houghlines.html",
+    },
+  },
+  {
+    path: "5-2",
+    component: () => import("pages/_5_/ImageHoughLinesPPage.vue"),
+    meta: {
+      title: "图像概率霍夫线变换",
+      caption: "Image HoughLinesP Example",
+      icon: "mdi-numeric-5-box-outline",
+      link: "https://docs.opencv.org/4.5.0/d3/de6/tutorial_js_houghlines.html",
     },
   },
   {
