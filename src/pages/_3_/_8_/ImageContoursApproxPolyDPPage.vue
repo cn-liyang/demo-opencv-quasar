@@ -9,20 +9,30 @@ function doCv() {
   cvObj.threshold(src, src, 120, 200, cvObj.THRESH_BINARY);
   const contours = new cvObj.MatVector();
   const hierarchy = new cvObj.Mat();
+  const poly = new cvObj.MatVector();
   cvObj.findContours(src, contours, hierarchy, cvObj.RETR_CCOMP, cvObj.CHAIN_APPROX_SIMPLE);
+  for (let i = 0; i < contours.size(); ++i) {
+    const tmp = new cvObj.Mat();
+    const cnt = contours.get(i);
+    cvObj.approxPolyDP(cnt, tmp, 3, true);
+    poly.push_back(tmp);
+    cnt.delete();
+    tmp.delete();
+  }
   for (let i = 0; i < contours.size(); ++i) {
     const color = new cvObj.Scalar(
       Math.round(Math.random() * 255),
       Math.round(Math.random() * 255),
       Math.round(Math.random() * 255)
     );
-    cvObj.drawContours(dst, contours, i, color, 1, cvObj.LINE_8, hierarchy, 100);
+    cvObj.drawContours(dst, poly, i, color, 1, cvObj.LINE_8, hierarchy, 0);
   }
   cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
   contours.delete();
   hierarchy.delete();
+  poly.delete();
 }
 </script>
 
