@@ -1,6 +1,14 @@
 import { route } from "quasar/wrappers";
 import { createMemoryHistory, createRouter, createWebHashHistory, createWebHistory } from "vue-router";
 
+declare module "vue-router" {
+  export interface RouteMeta {
+    readonly title: string;
+    readonly caption: string;
+    readonly icon: string;
+    readonly link: string;
+  }
+}
 /*
  * If not building with SSR mode, you can
  * directly export the Router instantiation;
