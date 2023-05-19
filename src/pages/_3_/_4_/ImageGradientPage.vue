@@ -3,12 +3,12 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
-  const dst = new cvObj.Mat();
-  cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2RGB);
-  const M = cvObj.Mat.ones(5, 5, cvObj.CV_8U);
-  cvObj.morphologyEx(src, dst, cvObj.MORPH_GRADIENT, M);
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  const src = opcv.imread(document.getElementById(inputId) as HTMLImageElement);
+  const dst = new opcv.Mat();
+  opcv.cvtColor(src, src, opcv.COLOR_RGBA2RGB);
+  const M = opcv.Mat.ones(5, 5, opcv.CV_8U);
+  opcv.morphologyEx(src, dst, opcv.MORPH_GRADIENT, M);
+  opcv.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
   M.delete();

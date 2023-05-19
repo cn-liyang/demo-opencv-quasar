@@ -4,14 +4,14 @@ const outputId1 = "outputId1";
 const outputId2 = "outputId2";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
-  const dstx = new cvObj.Mat();
-  const dsty = new cvObj.Mat();
-  cvObj.cvtColor(src, src, cvObj.COLOR_RGB2GRAY, 0);
-  cvObj.Sobel(src, dstx, cvObj.CV_8U, 1, 0, 3, 1, 0, cvObj.BORDER_DEFAULT);
-  cvObj.Sobel(src, dsty, cvObj.CV_8U, 0, 1, 3, 1, 0, cvObj.BORDER_DEFAULT);
-  cvObj.imshow(document.getElementById(outputId1) as HTMLCanvasElement, dstx);
-  cvObj.imshow(document.getElementById(outputId2) as HTMLCanvasElement, dsty);
+  const src = opcv.imread(document.getElementById(inputId) as HTMLImageElement);
+  const dstx = new opcv.Mat();
+  const dsty = new opcv.Mat();
+  opcv.cvtColor(src, src, opcv.COLOR_RGB2GRAY, 0);
+  opcv.Sobel(src, dstx, opcv.CV_8U, 1, 0, 3, 1, 0, opcv.BORDER_DEFAULT);
+  opcv.Sobel(src, dsty, opcv.CV_8U, 0, 1, 3, 1, 0, opcv.BORDER_DEFAULT);
+  opcv.imshow(document.getElementById(outputId1) as HTMLCanvasElement, dstx);
+  opcv.imshow(document.getElementById(outputId2) as HTMLCanvasElement, dsty);
   src.delete();
   dstx.delete();
   dsty.delete();
@@ -21,7 +21,7 @@ function doCv() {
 <template>
   <div class="column items-center q-gutter-y-md">
     <ActionButton @action="doCv" />
-    <InputImage :src="$getAssetsImage('lena.png')" :id="inputId" />
+    <InputImage :id="inputId" :src="$getAssetsImage('lena.png')" />
     <div class="row no-wrap items-center q-gutter-x-md">
       <OutputCanvas :id="outputId1" />
       <OutputCanvas :id="outputId2" />

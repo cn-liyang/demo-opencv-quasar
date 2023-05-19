@@ -3,20 +3,20 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
-  const dst = new cvObj.Mat();
-  const M = cvObj.Mat.ones(5, 5, cvObj.CV_8U);
-  cvObj.morphologyEx(
+  const src = opcv.imread(document.getElementById(inputId) as HTMLImageElement);
+  const dst = new opcv.Mat();
+  const M = opcv.Mat.ones(5, 5, opcv.CV_8U);
+  opcv.morphologyEx(
     src,
     dst,
-    cvObj.MORPH_OPEN,
+    opcv.MORPH_OPEN,
     M,
-    new cvObj.Point(-1, -1),
+    new opcv.Point(-1, -1),
     1,
-    cvObj.BORDER_CONSTANT,
-    cvObj.morphologyDefaultBorderValue()
+    opcv.BORDER_CONSTANT,
+    opcv.morphologyDefaultBorderValue()
   );
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  opcv.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
   M.delete();

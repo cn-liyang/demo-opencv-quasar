@@ -3,7 +3,7 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = opcv.imread(document.getElementById(inputId) as HTMLImageElement);
   console.log(
     "src image properties:" +
       `\nwidth: ${src.cols},` +
@@ -13,10 +13,10 @@ function doCv() {
       `\nchannels: ${src.channels()},` +
       `\ntype: ${src.type()}`
   );
-  const rect = new cvObj.Rect(100, 100, 100, 100);
+  const rect = new opcv.Rect(100, 100, 100, 100);
   const clo = src.clone();
   const dst = clo.roi(rect);
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  opcv.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
 }
@@ -25,7 +25,7 @@ function doCv() {
 <template>
   <div class="column items-center q-gutter-y-md">
     <ActionButton @action="doCv" />
-    <InputImage :src="$getAssetsImage('lena.png')" :id="inputId" />
+    <InputImage :id="inputId" :src="$getAssetsImage('lena.png')" />
     <OutputCanvas :id="outputId" />
   </div>
 </template>

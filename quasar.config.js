@@ -11,7 +11,8 @@
 const { configure } = require("quasar/wrappers");
 const path = require("path");
 
-module.exports = configure(function (/* ctx */) {
+module.exports = configure(function (ctx) {
+  console.log("ctx", ctx);
   return {
     eslint: {
       // fix: true,
@@ -74,15 +75,6 @@ module.exports = configure(function (/* ctx */) {
       // viteVuePluginOptions: {},
 
       vitePlugins: [
-        /*[
-          "rollup-plugin-copy",
-          {
-            targets: {
-              src: "src/assets/libs/opencv.js",
-              dest: "dist/spa",
-            },
-          },
-        ],*/
         [
           "@intlify/vite-plugin-vue-i18n",
           {

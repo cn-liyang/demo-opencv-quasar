@@ -3,7 +3,7 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = opcv.imread(document.getElementById(inputId) as HTMLImageElement);
   console.log(
     "src image properties:" +
       `\nsize: ${src.size().width}*${src.size().height},` +
@@ -11,9 +11,9 @@ function doCv() {
       `\nchannels: ${src.channels()},` +
       `\ntype: ${src.type()}`
   );
-  const dst = new cvObj.Mat();
-  const M = cvObj.Mat.eye(3, 3, cvObj.CV_32FC1);
-  cvObj.filter2D(src, dst, cvObj.CV_8U, M, new cvObj.Point(-1, -1), 0, cvObj.BORDER_DEFAULT);
+  const dst = new opcv.Mat();
+  const M = opcv.Mat.eye(3, 3, opcv.CV_32FC1);
+  opcv.filter2D(src, dst, opcv.CV_8U, M, new opcv.Point(-1, -1), 0, opcv.BORDER_DEFAULT);
   console.log(
     "dst image properties:" +
       `\nsize: ${dst.size().width}*${dst.size().height},` +
@@ -21,7 +21,7 @@ function doCv() {
       `\nchannels: ${dst.channels()},` +
       `\ntype: ${dst.type()}`
   );
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  opcv.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
   M.delete();
@@ -31,7 +31,7 @@ function doCv() {
 <template>
   <div class="column items-center q-gutter-y-md">
     <ActionButton @action="doCv" />
-    <InputImage :src="$getAssetsImage('lena.png')" :id="inputId" />
+    <InputImage :id="inputId" :src="$getAssetsImage('lena.png')" />
     <OutputCanvas :id="outputId" />
   </div>
 </template>

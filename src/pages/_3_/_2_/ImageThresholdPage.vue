@@ -3,7 +3,7 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = opcv.imread(document.getElementById(inputId) as HTMLImageElement);
   console.log(
     "src image properties:" +
       `\nsize: ${src.size().width}*${src.size().height},` +
@@ -11,8 +11,8 @@ function doCv() {
       `\nchannels: ${src.channels()},` +
       `\ntype: ${src.type()}`
   );
-  const dst = new cvObj.Mat();
-  cvObj.threshold(src, dst, 177, 200, cvObj.THRESH_BINARY);
+  const dst = new opcv.Mat();
+  opcv.threshold(src, dst, 177, 200, opcv.THRESH_BINARY);
   console.log(
     "dst image properties:" +
       `\nsize: ${dst.size().width}*${dst.size().height},` +
@@ -20,7 +20,7 @@ function doCv() {
       `\nchannels: ${dst.channels()},` +
       `\ntype: ${dst.type()}`
   );
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  opcv.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
 }
@@ -29,7 +29,7 @@ function doCv() {
 <template>
   <div class="column items-center q-gutter-y-md">
     <ActionButton @action="doCv" />
-    <InputImage :src="$getAssetsImage('lena.png')" :id="inputId" />
+    <InputImage :id="inputId" :src="$getAssetsImage('lena.png')" />
     <OutputCanvas :id="outputId" />
   </div>
 </template>
