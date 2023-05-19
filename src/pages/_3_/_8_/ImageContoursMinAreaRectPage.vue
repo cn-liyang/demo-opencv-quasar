@@ -19,7 +19,7 @@ function doCv() {
   for (let i = 0; i < 4; i++) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    cvObj.line(dst, vertices[i], vertices[(i + 1) % 4], rectangleColor, 1, cvObj.LINE_AA, 0);
+    cvObj.line(dst, vertices[i], vertices[(i + 1) % 4], rectangleColor, 1, cvObj.LINE_AA, 0); // core
   }
   cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();

@@ -11,13 +11,13 @@ function doCv() {
   const hierarchy = new cvObj.Mat();
   cvObj.findContours(src, contours, hierarchy, cvObj.RETR_CCOMP, cvObj.CHAIN_APPROX_SIMPLE);
   const cnt = contours.get(0);
-  const rect = cvObj.boundingRect(cnt); // core
+  const circle = cvObj.minEnclosingCircle(cnt); // core
   const contoursColor = new cvObj.Scalar(0, 255, 0);
-  const rectangleColor = new cvObj.Scalar(255, 0, 0);
+  const circleColor = new cvObj.Scalar(255, 0, 0);
   cvObj.drawContours(dst, contours, 0, contoursColor, 1, cvObj.LINE_8, hierarchy, 100);
-  const point1 = new cvObj.Point(rect.x, rect.y);
-  const point2 = new cvObj.Point(rect.x + rect.width, rect.y + rect.height);
-  cvObj.rectangle(dst, point1, point2, rectangleColor, 1, cvObj.LINE_AA, 0); // core
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  cvObj.circle(dst, circle.center, circle.radius, circleColor);
   cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();

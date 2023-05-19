@@ -345,7 +345,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
     path: "3-8-4",
     component: () => import("pages/_3_/_8_/ImageContoursBoundingRectPage.vue"),
     meta: {
-      title: "图像边缘最小矩形边框",
+      title: "图像边缘最小矩形",
       caption: "Bounding Rect Example",
       icon: "mdi-numeric-3-box-outline",
       link: "https://docs.opencv.org/4.5.0/dc/dcf/tutorial_js_contour_features.html",
@@ -353,10 +353,30 @@ const routeChildrenMain: RouteRecordRaw[] = [
   },
   {
     path: "3-8-5",
-    component: () => import("pages/_3_/_8_/ImageContoursMinAreaRectRectPage.vue"),
+    component: () => import("pages/_3_/_8_/ImageContoursMinAreaRectPage.vue"),
     meta: {
-      title: "图像边缘最小矩形面积",
+      title: "图像边缘最小矩面",
       caption: "Min Area Rect Example",
+      icon: "mdi-numeric-3-box-outline",
+      link: "https://docs.opencv.org/4.5.0/dc/dcf/tutorial_js_contour_features.html",
+    },
+  },
+  {
+    path: "3-8-6",
+    component: () => import("pages/_3_/_8_/ImageContoursMinEnclosingCirclePage.vue"),
+    meta: {
+      title: "图像边缘最小圆形",
+      caption: "Min Enclosing Circle Example",
+      icon: "mdi-numeric-3-box-outline",
+      link: "https://docs.opencv.org/4.5.0/dc/dcf/tutorial_js_contour_features.html",
+    },
+  },
+  {
+    path: "3-8-7",
+    component: () => import("pages/_3_/_8_/ImageContoursFitEllipsePage.vue"),
+    meta: {
+      title: "图像边缘拟合椭圆",
+      caption: "Fit Ellipse Example",
       icon: "mdi-numeric-3-box-outline",
       link: "https://docs.opencv.org/4.5.0/dc/dcf/tutorial_js_contour_features.html",
     },
