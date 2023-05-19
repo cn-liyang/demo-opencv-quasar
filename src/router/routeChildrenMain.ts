@@ -242,8 +242,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-5-1",
-    component: () => import("pages/_3_/_5_/ImageGradientSobelPage.vue"),
+    path: "3-6-1",
+    component: () => import("pages/_3_/_6_/ImageGradientSobelPage.vue"),
     meta: {
       title: "图像梯度 Sobel",
       caption: "Image Sobel Example",
@@ -252,8 +252,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-5-2",
-    component: () => import("pages/_3_/_5_/ImageGradientScharrPage.vue"),
+    path: "3-6-2",
+    component: () => import("pages/_3_/_6_/ImageGradientScharrPage.vue"),
     meta: {
       title: "图像梯度 Scharr",
       caption: "Image Sobel Example",
@@ -262,8 +262,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-5-3",
-    component: () => import("pages/_3_/_5_/ImageGradientLaplacianPage.vue"),
+    path: "3-6-3",
+    component: () => import("pages/_3_/_6_/ImageGradientLaplacianPage.vue"),
     meta: {
       title: "图像梯度 Laplacian",
       caption: "Image Laplacian Example",
@@ -272,8 +272,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-5-4",
-    component: () => import("pages/_3_/_5_/ImageGradientAbsSobelPage.vue"),
+    path: "3-6-4",
+    component: () => import("pages/_3_/_6_/ImageGradientAbsSobelPage.vue"),
     meta: {
       title: "图像梯度 AbsSobel",
       caption: "Image AbsSobel Example",
