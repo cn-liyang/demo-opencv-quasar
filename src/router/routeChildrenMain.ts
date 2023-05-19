@@ -242,8 +242,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-6-1",
-    component: () => import("pages/_3_/_6_/ImageGradientSobelPage.vue"),
+    path: "171",
+    component: () => import("pages/_1_image/_7_gradient/Image1GradientSobelPage.vue"),
     meta: {
       title: "图像梯度 Sobel",
       caption: "Image Sobel Example",
@@ -252,8 +252,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-6-2",
-    component: () => import("pages/_3_/_6_/ImageGradientScharrPage.vue"),
+    path: "172",
+    component: () => import("pages/_1_image/_7_gradient/Image2GradientScharrPage.vue"),
     meta: {
       title: "图像梯度 Scharr",
       caption: "Image Sobel Example",
@@ -262,8 +262,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-6-3",
-    component: () => import("pages/_3_/_6_/ImageGradientLaplacianPage.vue"),
+    path: "173",
+    component: () => import("pages/_1_image/_7_gradient/Image3GradientLaplacianPage.vue"),
     meta: {
       title: "图像梯度 Laplacian",
       caption: "Image Laplacian Example",
@@ -272,8 +272,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-6-4",
-    component: () => import("pages/_3_/_6_/ImageGradientAbsSobelPage.vue"),
+    path: "174",
+    component: () => import("pages/_1_image/_7_gradient/Image4GradientAbsSobelPage.vue"),
     meta: {
       title: "图像梯度 AbsSobel",
       caption: "Image AbsSobel Example",
@@ -282,8 +282,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-7",
-    component: () => import("pages/_3_/_7_/ImageCannyPage.vue"),
+    path: "18",
+    component: () => import("pages/_1_image/_8_edge/ImageCannyPage.vue"),
     meta: {
       title: "图像边缘 Canny",
       caption: "Image Canny Example",
@@ -292,20 +292,20 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-8-1",
-    component: () => import("pages/_3_/_8_/ImagePyrDownPage.vue"),
+    path: "191",
+    component: () => import("pages/_1_image/_9_blending/ImagePyrDownPage.vue"),
     meta: {
-      title: "图像下金字塔",
+      title: "图像金字塔向下混合",
       caption: "Image PyrDown Example",
       icon: "mdi-numeric-3-box-outline",
       link: "https://docs.opencv.org/4.5.0/d5/d0f/tutorial_js_pyramids.html",
     },
   },
   {
-    path: "3-8-2",
-    component: () => import("pages/_3_/_8_/ImagePyrUpPage.vue"),
+    path: "192",
+    component: () => import("pages/_1_image/_9_blending/ImagePyrUpPage.vue"),
     meta: {
-      title: "图像上金字塔",
+      title: "图像金字塔向上混合",
       caption: "Image PyrUp Example",
       icon: "mdi-numeric-3-box-outline",
       link: "https://docs.opencv.org/4.5.0/d5/d0f/tutorial_js_pyramids.html",
