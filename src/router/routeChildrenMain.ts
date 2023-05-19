@@ -405,7 +405,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
     path: "5-1",
     component: () => import("pages/_5_/ImageHoughLinesPage.vue"),
     meta: {
-      title: "图像简单霍夫线变换",
+      title: "图像霍夫线变换",
       caption: "Hough Lines Example",
       icon: "mdi-numeric-5-box-outline",
       link: "https://docs.opencv.org/4.5.0/d3/de6/tutorial_js_houghlines.html",
@@ -419,6 +419,16 @@ const routeChildrenMain: RouteRecordRaw[] = [
       caption: "Image HoughLinesP Example",
       icon: "mdi-numeric-5-box-outline",
       link: "https://docs.opencv.org/4.5.0/d3/de6/tutorial_js_houghlines.html",
+    },
+  },
+  {
+    path: "5-3",
+    component: () => import("pages/_5_/ImageHoughCirclesPage.vue"),
+    meta: {
+      title: "图像霍夫圆变换",
+      caption: "Hough Circles Example",
+      icon: "mdi-numeric-5-box-outline",
+      link: "https://docs.opencv.org/4.5.0/d3/de5/tutorial_js_houghcircles.html",
     },
   },
   {
