@@ -8,7 +8,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "入门",
       caption: "Hello OpenCV.js",
       icon: "mdi-numeric-0-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d0/d84/tutorial_js_usage.html",
+      link: "https://docs.opencv.org/4.5.0/d0/d84/tutorial_js_usage.html",
     },
   },
   {
@@ -18,7 +18,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像 IO（灰度）",
       caption: "Image Read and Show Example",
       icon: "mdi-numeric-1-box-outline",
-      link: "https://docs.opencv.org/4.7.0/df/d24/tutorial_js_image_display.html",
+      link: "https://docs.opencv.org/4.5.0/df/d24/tutorial_js_image_display.html",
     },
   },
   {
@@ -28,7 +28,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像区域截图",
       caption: "Image ROI Example",
       icon: "mdi-numeric-2-box-outline",
-      link: "https://docs.opencv.org/4.7.0/de/d06/tutorial_js_basic_ops.html",
+      link: "https://docs.opencv.org/4.5.0/de/d06/tutorial_js_basic_ops.html",
     },
   },
   {
@@ -38,7 +38,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像色彩变更",
       caption: "Image InRange Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/db/d64/tutorial_js_colorspaces.html",
+      link: "https://docs.opencv.org/4.5.0/db/d64/tutorial_js_colorspaces.html",
     },
   },
   {
@@ -48,7 +48,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像缩放变换",
       caption: "Image Resize Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/dd/d52/tutorial_js_geometric_transformations.html",
+      link: "https://docs.opencv.org/4.5.0/dd/d52/tutorial_js_geometric_transformations.html",
     },
   },
   {
@@ -58,7 +58,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像旋转变换",
       caption: "Rotate Transform Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/dd/d52/tutorial_js_geometric_transformations.html",
+      link: "https://docs.opencv.org/4.5.0/dd/d52/tutorial_js_geometric_transformations.html",
     },
   },
   {
@@ -68,7 +68,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像仿射变换",
       caption: "Get Affine Transform Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/dd/d52/tutorial_js_geometric_transformations.html",
+      link: "https://docs.opencv.org/4.5.0/dd/d52/tutorial_js_geometric_transformations.html",
     },
   },
   {
@@ -78,7 +78,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像透视变换",
       caption: "Perspectiv Transform Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/dd/d52/tutorial_js_geometric_transformations.html",
+      link: "https://docs.opencv.org/4.5.0/dd/d52/tutorial_js_geometric_transformations.html",
     },
   },
   {
@@ -88,7 +88,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像简单阈值",
       caption: "Image Threshold Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d7/dd0/tutorial_js_thresholding.html",
+      link: "https://docs.opencv.org/4.5.0/d7/dd0/tutorial_js_thresholding.html",
     },
   },
   {
@@ -98,7 +98,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像自适阈值",
       caption: "Adaptive Threshold Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d7/dd0/tutorial_js_thresholding.html",
+      link: "https://docs.opencv.org/4.5.0/d7/dd0/tutorial_js_thresholding.html",
     },
   },
   {
@@ -108,7 +108,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像简单过滤",
       caption: "Image Filter Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/dd/d6a/tutorial_js_filtering.html",
+      link: "https://docs.opencv.org/4.5.0/dd/d6a/tutorial_js_filtering.html",
     },
   },
   {
@@ -118,7 +118,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像均值滤波",
       caption: "Image Blur Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/dd/d6a/tutorial_js_filtering.html",
+      link: "https://docs.opencv.org/4.5.0/dd/d6a/tutorial_js_filtering.html",
     },
   },
   {
@@ -128,7 +128,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像方框滤波",
       caption: "Image Blur Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/dd/d6a/tutorial_js_filtering.html",
+      link: "https://docs.opencv.org/4.5.0/dd/d6a/tutorial_js_filtering.html",
     },
   },
   {
@@ -138,7 +138,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像高斯滤波",
       caption: "Gaussian Blur Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/dd/d6a/tutorial_js_filtering.html",
+      link: "https://docs.opencv.org/4.5.0/dd/d6a/tutorial_js_filtering.html",
     },
   },
   {
@@ -148,7 +148,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像中值滤波",
       caption: "Median Blur Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/dd/d6a/tutorial_js_filtering.html",
+      link: "https://docs.opencv.org/4.5.0/dd/d6a/tutorial_js_filtering.html",
     },
   },
   {
@@ -158,7 +158,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像双边滤波",
       caption: "Bilateral Filter Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/dd/d6a/tutorial_js_filtering.html",
+      link: "https://docs.opencv.org/4.5.0/dd/d6a/tutorial_js_filtering.html",
     },
   },
   {
@@ -168,7 +168,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像形态腐蚀",
       caption: "Image Erode Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d4/d76/tutorial_js_morphological_ops.html",
+      link: "https://docs.opencv.org/4.5.0/d4/d76/tutorial_js_morphological_ops.html",
     },
   },
   {
@@ -178,7 +178,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像形态膨胀",
       caption: "Image Dilate Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d4/d76/tutorial_js_morphological_ops.html",
+      link: "https://docs.opencv.org/4.5.0/d4/d76/tutorial_js_morphological_ops.html",
     },
   },
   {
@@ -188,7 +188,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像形态正开",
       caption: "开运算 = 先腐蚀，再膨胀",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d4/d76/tutorial_js_morphological_ops.html",
+      link: "https://docs.opencv.org/4.5.0/d4/d76/tutorial_js_morphological_ops.html",
     },
   },
   {
@@ -198,7 +198,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像形态逆闭",
       caption: "闭运算 = 先膨胀，再腐蚀",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d4/d76/tutorial_js_morphological_ops.html",
+      link: "https://docs.opencv.org/4.5.0/d4/d76/tutorial_js_morphological_ops.html",
     },
   },
   {
@@ -208,7 +208,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像形态梯度",
       caption: "梯度运算 = 膨胀结果 - 腐蚀结果",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d4/d76/tutorial_js_morphological_ops.html",
+      link: "https://docs.opencv.org/4.5.0/d4/d76/tutorial_js_morphological_ops.html",
     },
   },
   {
@@ -218,7 +218,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像形态礼帽",
       caption: "礼帽运算 = 原始输入 - 开运算结果",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d4/d76/tutorial_js_morphological_ops.html",
+      link: "https://docs.opencv.org/4.5.0/d4/d76/tutorial_js_morphological_ops.html",
     },
   },
   {
@@ -228,7 +228,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像形态黑帽",
       caption: "黑帽运算 = 闭运算结果 - 原始输入",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d4/d76/tutorial_js_morphological_ops.html",
+      link: "https://docs.opencv.org/4.5.0/d4/d76/tutorial_js_morphological_ops.html",
     },
   },
   {
@@ -238,7 +238,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像形态结构",
       caption: "Get Structuring Element Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d4/d76/tutorial_js_morphological_ops.html",
+      link: "https://docs.opencv.org/4.5.0/d4/d76/tutorial_js_morphological_ops.html",
     },
   },
   {
@@ -248,7 +248,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像梯度 Sobel",
       caption: "Image Sobel Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/da/d85/tutorial_js_gradients.html",
+      link: "https://docs.opencv.org/4.5.0/da/d85/tutorial_js_gradients.html",
     },
   },
   {
@@ -258,7 +258,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像梯度 Scharr",
       caption: "Image Sobel Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/da/d85/tutorial_js_gradients.html",
+      link: "https://docs.opencv.org/4.5.0/da/d85/tutorial_js_gradients.html",
     },
   },
   {
@@ -268,7 +268,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像梯度 Laplacian",
       caption: "Image Laplacian Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/da/d85/tutorial_js_gradients.html",
+      link: "https://docs.opencv.org/4.5.0/da/d85/tutorial_js_gradients.html",
     },
   },
   {
@@ -278,7 +278,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像梯度 AbsSobel",
       caption: "Image AbsSobel Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/da/d85/tutorial_js_gradients.html",
+      link: "https://docs.opencv.org/4.5.0/da/d85/tutorial_js_gradients.html",
     },
   },
   {
@@ -288,7 +288,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像边缘 Canny",
       caption: "Image Canny Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d7/de1/tutorial_js_canny.html",
+      link: "https://docs.opencv.org/4.5.0/d7/de1/tutorial_js_canny.html",
     },
   },
   {
@@ -298,7 +298,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像下金字塔",
       caption: "Image PyrDown Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d5/d0f/tutorial_js_pyramids.html",
+      link: "https://docs.opencv.org/4.5.0/d5/d0f/tutorial_js_pyramids.html",
     },
   },
   {
@@ -308,7 +308,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像上金字塔",
       caption: "Image PyrUp Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d5/d0f/tutorial_js_pyramids.html",
+      link: "https://docs.opencv.org/4.5.0/d5/d0f/tutorial_js_pyramids.html",
     },
   },
   {
@@ -318,7 +318,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像边缘检测",
       caption: "Image Contours Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d5/daa/tutorial_js_contours_begin.html",
+      link: "https://docs.opencv.org/4.5.0/d5/daa/tutorial_js_contours_begin.html",
     },
   },
   {
@@ -328,7 +328,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像边缘近似多边",
       caption: "Image ApproxPolyDP Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/dc/dcf/tutorial_js_contour_features.html",
+      link: "https://docs.opencv.org/4.5.0/dc/dcf/tutorial_js_contour_features.html",
     },
   },
   {
@@ -338,7 +338,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像边缘凸出外壳",
       caption: "Convex Hull Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/dc/dcf/tutorial_js_contour_features.html",
+      link: "https://docs.opencv.org/4.5.0/dc/dcf/tutorial_js_contour_features.html",
     },
   },
   {
@@ -348,7 +348,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像边缘最小矩形边框",
       caption: "Bounding Rect Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/dc/dcf/tutorial_js_contour_features.html",
+      link: "https://docs.opencv.org/4.5.0/dc/dcf/tutorial_js_contour_features.html",
     },
   },
   {
@@ -358,7 +358,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像边缘最小矩形面积",
       caption: "Min Area Rect Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/dc/dcf/tutorial_js_contour_features.html",
+      link: "https://docs.opencv.org/4.5.0/dc/dcf/tutorial_js_contour_features.html",
     },
   },
   {
@@ -368,7 +368,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
       title: "图像模版匹配",
       caption: "Template Match Example",
       icon: "mdi-numeric-3-box-outline",
-      link: "https://docs.opencv.org/4.7.0/d8/dd1/tutorial_js_template_matching.html",
+      link: "https://docs.opencv.org/4.5.0/d8/dd1/tutorial_js_template_matching.html",
     },
   },
 ];
