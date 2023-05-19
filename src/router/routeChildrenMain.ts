@@ -382,6 +382,16 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
+    path: "3-8-8",
+    component: () => import("pages/_3_/_8_/ImageContoursFitLinePage.vue"),
+    meta: {
+      title: "图像边缘拟合直线",
+      caption: "Fit Line Example",
+      icon: "mdi-numeric-3-box-outline",
+      link: "https://docs.opencv.org/4.5.0/dc/dcf/tutorial_js_contour_features.html",
+    },
+  },
+  {
     path: "3-9",
     component: () => import("pages/_3_/_9_/ImageTemplateMatchPage.vue"),
     meta: {
