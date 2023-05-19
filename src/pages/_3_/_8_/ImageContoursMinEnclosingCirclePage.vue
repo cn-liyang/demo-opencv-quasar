@@ -17,7 +17,7 @@ function doCv() {
   cvObj.drawContours(dst, contours, 0, contoursColor, 1, cvObj.LINE_8, hierarchy, 100);
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  cvObj.circle(dst, circle.center, circle.radius, circleColor);
+  cvObj.circle(dst, circle.center, circle.radius, circleColor); // core
   cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
