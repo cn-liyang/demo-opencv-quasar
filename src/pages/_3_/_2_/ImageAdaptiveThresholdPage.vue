@@ -3,7 +3,7 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = opcv.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
   console.log(
     "src image properties:" +
       `\nsize: ${src.size().width}*${src.size().height},` +
@@ -11,9 +11,9 @@ function doCv() {
       `\nchannels: ${src.channels()},` +
       `\ntype: ${src.type()}`
   );
-  const dst = new opcv.Mat();
-  opcv.cvtColor(src, src, opcv.COLOR_RGBA2GRAY, 0);
-  opcv.adaptiveThreshold(src, dst, 200, opcv.ADAPTIVE_THRESH_GAUSSIAN_C, opcv.THRESH_BINARY, 3, 2);
+  const dst = new cvObj.Mat();
+  cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2GRAY, 0);
+  cvObj.adaptiveThreshold(src, dst, 200, cvObj.ADAPTIVE_THRESH_GAUSSIAN_C, cvObj.THRESH_BINARY, 3, 2);
   console.log(
     "dst image properties:" +
       `\nsize: ${dst.size().width}*${dst.size().height},` +
@@ -21,7 +21,7 @@ function doCv() {
       `\nchannels: ${dst.channels()},` +
       `\ntype: ${dst.type()}`
   );
-  opcv.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
 }

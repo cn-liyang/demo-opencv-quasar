@@ -3,24 +3,24 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = opcv.imread(document.getElementById(inputId) as HTMLImageElement);
-  const dst = opcv.Mat.zeros(src.cols, src.rows, opcv.CV_8UC3);
-  opcv.cvtColor(src, src, opcv.COLOR_RGBA2GRAY, 0);
-  opcv.threshold(src, src, 120, 200, opcv.THRESH_BINARY);
-  const contours = new opcv.MatVector();
-  const hierarchy = new opcv.Mat();
-  opcv.findContours(src, contours, hierarchy, opcv.RETR_CCOMP, opcv.CHAIN_APPROX_SIMPLE);
+  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
+  const dst = cvObj.Mat.zeros(src.cols, src.rows, cvObj.CV_8UC3);
+  cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2GRAY, 0);
+  cvObj.threshold(src, src, 120, 200, cvObj.THRESH_BINARY);
+  const contours = new cvObj.MatVector();
+  const hierarchy = new cvObj.Mat();
+  cvObj.findContours(src, contours, hierarchy, cvObj.RETR_CCOMP, cvObj.CHAIN_APPROX_SIMPLE);
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   for (let i = 0; i < contours.size(); ++i) {
-    const color = new opcv.Scalar(
+    const color = new cvObj.Scalar(
       Math.round(Math.random() * 255),
       Math.round(Math.random() * 255),
       Math.round(Math.random() * 255)
     );
-    opcv.drawContours(dst, contours, i, color, 1, opcv.LINE_8, hierarchy, 100);
+    cvObj.drawContours(dst, contours, i, color, 1, cvObj.LINE_8, hierarchy, 100);
   }
-  opcv.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
   contours.delete();

@@ -1,16 +1,16 @@
 import { boot } from "quasar/wrappers";
+import cv from "opencv-ts";
 
 declare module "@vue/runtime-core" {
   interface ComponentCustomProperties {
-    $opcv: typeof opcv;
+    $cvObj: typeof cvObj;
   }
 }
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const opcv = cv;
+
+const cvObj = cv;
 
 export default boot(({ app }) => {
-  app.config.globalProperties.$opcv = opcv;
+  app.config.globalProperties.$cvObj = cvObj;
 });
 
-export { opcv };
+export { cvObj };

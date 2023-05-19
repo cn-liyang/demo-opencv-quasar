@@ -3,7 +3,7 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = opcv.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
   console.log(
     "src image properties:" +
       `\nsize: ${src.size().width}*${src.size().height},` +
@@ -11,10 +11,10 @@ function doCv() {
       `\nchannels: ${src.channels()},` +
       `\ntype: ${src.type()}`
   );
-  const lowerb = new opcv.Mat(src.rows, src.cols, src.type(), [0, 0, 0, 0]);
-  const upperb = new opcv.Mat(src.rows, src.cols, src.type(), [150, 150, 150, 255]);
-  const dst = new opcv.Mat();
-  opcv.inRange(src, lowerb, upperb, dst);
+  const lowerb = new cvObj.Mat(src.rows, src.cols, src.type(), [0, 0, 0, 0]);
+  const upperb = new cvObj.Mat(src.rows, src.cols, src.type(), [150, 150, 150, 255]);
+  const dst = new cvObj.Mat();
+  cvObj.inRange(src, lowerb, upperb, dst);
   console.log(
     "dst image properties:" +
       `\nsize: ${dst.size().width}*${dst.size().height},` +
@@ -22,7 +22,7 @@ function doCv() {
       `\nchannels: ${dst.channels()},` +
       `\ntype: ${dst.type()}`
   );
-  opcv.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
   lowerb.delete();

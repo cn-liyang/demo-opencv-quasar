@@ -3,7 +3,7 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = opcv.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
   console.log(
     "src image properties:" +
       `\nsize: ${src.size().width}*${src.size().height},` +
@@ -11,12 +11,12 @@ function doCv() {
       `\nchannels: ${src.channels()},` +
       `\ntype: ${src.type()}`
   );
-  const dst = new opcv.Mat();
-  const srcTri = opcv.matFromArray(3, 1, opcv.CV_32FC2, [0, 0, 0, 1, 1, 0]);
-  const dstTri = opcv.matFromArray(3, 1, opcv.CV_32FC2, [0.6, 0.2, 0.1, 1.3, 1.5, 0.3]);
-  const M = opcv.getAffineTransform(srcTri, dstTri);
-  const dsize = new opcv.Size(src.rows, src.cols);
-  opcv.warpAffine(src, dst, M, dsize, opcv.INTER_LINEAR, opcv.BORDER_CONSTANT, new opcv.Scalar());
+  const dst = new cvObj.Mat();
+  const srcTri = cvObj.matFromArray(3, 1, cvObj.CV_32FC2, [0, 0, 0, 1, 1, 0]);
+  const dstTri = cvObj.matFromArray(3, 1, cvObj.CV_32FC2, [0.6, 0.2, 0.1, 1.3, 1.5, 0.3]);
+  const M = cvObj.getAffineTransform(srcTri, dstTri);
+  const dsize = new cvObj.Size(src.rows, src.cols);
+  cvObj.warpAffine(src, dst, M, dsize, cvObj.INTER_LINEAR, cvObj.BORDER_CONSTANT, new cvObj.Scalar());
   console.log(
     "dst image properties:" +
       `\nsize: ${dst.size().width}*${dst.size().height},` +
@@ -24,7 +24,7 @@ function doCv() {
       `\nchannels: ${dst.channels()},` +
       `\ntype: ${dst.type()}`
   );
-  opcv.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
   srcTri.delete();

@@ -3,11 +3,11 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = opcv.imread(document.getElementById(inputId) as HTMLImageElement);
-  const dst = new opcv.Mat();
-  opcv.cvtColor(src, src, opcv.COLOR_RGB2GRAY, 0);
-  opcv.Canny(src, dst, 50, 100, 3, false);
-  opcv.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
+  const dst = new cvObj.Mat();
+  cvObj.cvtColor(src, src, cvObj.COLOR_RGB2GRAY, 0);
+  cvObj.Canny(src, dst, 50, 100, 3, false);
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
   dst.delete();
 }
