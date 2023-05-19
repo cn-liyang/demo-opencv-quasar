@@ -432,12 +432,22 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "9",
-    component: () => import("pages/_9_/ImageTemplateMatchPage.vue"),
+    path: "6-1",
+    component: () => import("pages/_6_/ImageThresholdPage.vue"),
+    meta: {
+      title: "图像模版匹配",
+      caption: "Image Threshold Example",
+      icon: "mdi-numeric-6-box-outline",
+      link: "https://docs.opencv.org/4.5.0/d7/d1c/tutorial_js_watershed.html",
+    },
+  },
+  {
+    path: "7",
+    component: () => import("pages/_7_/ImageTemplateMatchPage.vue"),
     meta: {
       title: "图像模版匹配",
       caption: "Template Match Example",
-      icon: "mdi-numeric-9-box-outline",
+      icon: "mdi-numeric-7-box-outline",
       link: "https://docs.opencv.org/4.5.0/d8/dd1/tutorial_js_template_matching.html",
     },
   },
