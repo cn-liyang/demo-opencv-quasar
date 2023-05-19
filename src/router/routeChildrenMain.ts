@@ -82,18 +82,18 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-3-1",
-    component: () => import("pages/_3_/_3_/ImageThresholdPage.vue"),
+    path: "141",
+    component: () => import("pages/_1_image/_4_thresholding/Image1ThresholdPage.vue"),
     meta: {
-      title: "图像简单阈值",
+      title: "图像阈值",
       caption: "Image Threshold Example",
       icon: "mdi-numeric-3-box-outline",
       link: "https://docs.opencv.org/4.5.0/d7/dd0/tutorial_js_thresholding.html",
     },
   },
   {
-    path: "3-3-2",
-    component: () => import("pages/_3_/_3_/ImageAdaptiveThresholdPage.vue"),
+    path: "142",
+    component: () => import("pages/_1_image/_4_thresholding/Image2AdaptiveThresholdPage.vue"),
     meta: {
       title: "图像自适阈值",
       caption: "Adaptive Threshold Example",
@@ -102,8 +102,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-4-1",
-    component: () => import("pages/_3_/_4_/ImageFilterPage.vue"),
+    path: "151",
+    component: () => import("pages/_1_image/_5_smoothing/Image1FilterPage.vue"),
     meta: {
       title: "图像简单过滤",
       caption: "Image Filter Example",
@@ -112,8 +112,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-4-2",
-    component: () => import("pages/_3_/_4_/ImageAveragingBlurPage.vue"),
+    path: "152",
+    component: () => import("pages/_1_image/_5_smoothing/Image2AveragingBlurPage.vue"),
     meta: {
       title: "图像均值滤波",
       caption: "Image Blur Example",
@@ -122,8 +122,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-4-3",
-    component: () => import("pages/_3_/_4_/ImageAveragingBoxFilterPage.vue"),
+    path: "153",
+    component: () => import("pages/_1_image/_5_smoothing/Image3AveragingBoxFilterPage.vue"),
     meta: {
       title: "图像方框滤波",
       caption: "Image Blur Example",
@@ -132,8 +132,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-4-4",
-    component: () => import("pages/_3_/_4_/ImageGaussianBlurPage.vue"),
+    path: "154",
+    component: () => import("pages/_1_image/_5_smoothing/Image4GaussianBlurPage.vue"),
     meta: {
       title: "图像高斯滤波",
       caption: "Gaussian Blur Example",
@@ -142,8 +142,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-4-5",
-    component: () => import("pages/_3_/_4_/ImageMedianBlurPage.vue"),
+    path: "155",
+    component: () => import("pages/_1_image/_5_smoothing/Image5MedianBlurPage.vue"),
     meta: {
       title: "图像中值滤波",
       caption: "Median Blur Example",
@@ -152,8 +152,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-4-6",
-    component: () => import("pages/_3_/_4_/ImageBilateralFilterPage.vue"),
+    path: "156",
+    component: () => import("pages/_1_image/_5_smoothing/Image6BilateralFilterPage.vue"),
     meta: {
       title: "图像双边滤波",
       caption: "Bilateral Filter Example",
