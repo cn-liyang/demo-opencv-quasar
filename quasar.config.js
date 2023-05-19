@@ -74,12 +74,15 @@ module.exports = configure(function (/* ctx */) {
       // viteVuePluginOptions: {},
 
       vitePlugins: [
-        [
-          "opencv.js",
+        /*[
+          "rollup-plugin-copy",
           {
-            include: path.resolve(__dirname, "./src/assets/libs/opencv.js"),
+            targets: {
+              src: "src/assets/libs/opencv.js",
+              dest: "dist/spa",
+            },
           },
-        ],
+        ],*/
         [
           "@intlify/vite-plugin-vue-i18n",
           {
