@@ -32,8 +32,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-0",
-    component: () => import("pages/_3_/_0_/ImageInRangePage.vue"),
+    path: "3-1",
+    component: () => import("pages/_3_/_1_/ImageInRangePage.vue"),
     meta: {
       title: "图像色彩变更",
       caption: "Image InRange Example",
@@ -42,8 +42,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-1-1",
-    component: () => import("pages/_3_/_1_/ImageResizePage.vue"),
+    path: "3-2-1",
+    component: () => import("pages/_3_/_2_/ImageResizePage.vue"),
     meta: {
       title: "图像缩放变换",
       caption: "Image Resize Example",
@@ -52,8 +52,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-1-2",
-    component: () => import("pages/_3_/_1_/ImageRotateTransformPage.vue"),
+    path: "3-2-2",
+    component: () => import("pages/_3_/_2_/ImageRotateTransformPage.vue"),
     meta: {
       title: "图像旋转变换",
       caption: "Rotate Transform Example",
@@ -62,8 +62,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-1-3",
-    component: () => import("pages/_3_/_1_/ImageAffineTransformPage.vue"),
+    path: "3-2-3",
+    component: () => import("pages/_3_/_2_/ImageAffineTransformPage.vue"),
     meta: {
       title: "图像仿射变换",
       caption: "Get Affine Transform Example",
@@ -72,8 +72,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-1-4",
-    component: () => import("pages/_3_/_1_/ImagePerspectivTransformPage.vue"),
+    path: "3-2-4",
+    component: () => import("pages/_3_/_2_/ImagePerspectivTransformPage.vue"),
     meta: {
       title: "图像透视变换",
       caption: "Perspectiv Transform Example",
@@ -82,8 +82,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-2-1",
-    component: () => import("pages/_3_/_2_/ImageThresholdPage.vue"),
+    path: "3-3-1",
+    component: () => import("pages/_3_/_3_/ImageThresholdPage.vue"),
     meta: {
       title: "图像简单阈值",
       caption: "Image Threshold Example",
@@ -92,8 +92,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-2-2",
-    component: () => import("pages/_3_/_2_/ImageAdaptiveThresholdPage.vue"),
+    path: "3-3-2",
+    component: () => import("pages/_3_/_3_/ImageAdaptiveThresholdPage.vue"),
     meta: {
       title: "图像自适阈值",
       caption: "Adaptive Threshold Example",
