@@ -4,14 +4,12 @@ const outputId = "outputId";
 
 function doCv() {
   const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
-  const dst = cvObj.Mat.zeros(src.cols, src.rows, cvObj.CV_8UC3);
+  const dst = new cvObj.Mat.zeros(src.cols, src.rows, cvObj.CV_8UC3);
   cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2GRAY, 0);
   cvObj.threshold(src, src, 120, 200, cvObj.THRESH_BINARY);
   const contours = new cvObj.MatVector();
   const hierarchy = new cvObj.Mat();
   cvObj.findContours(src, contours, hierarchy, cvObj.RETR_CCOMP, cvObj.CHAIN_APPROX_SIMPLE);
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   for (let i = 0; i < contours.size(); ++i) {
     const color = new cvObj.Scalar(
       Math.round(Math.random() * 255),
