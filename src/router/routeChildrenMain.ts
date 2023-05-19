@@ -392,6 +392,16 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
+    path: "4-3",
+    component: () => import("pages/_4_/_2_/ImageTransposePage.vue"),
+    meta: {
+      title: "图像转置",
+      caption: "Image Transpose Example",
+      icon: "mdi-numeric-4-box-outline",
+      link: "https://docs.opencv.org/4.5.0/da/dc1/tutorial_js_contour_properties.html",
+    },
+  },
+  {
     path: "9",
     component: () => import("pages/_9_/ImageTemplateMatchPage.vue"),
     meta: {
