@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <q-drawer behavior="desktop" show-if-above elevated overlay>
+  <q-drawer behavior="desktop" elevated overlay>
     <q-scroll-area class="fit">
       <q-list>
         <q-item v-for="i in $routeMainChildren" :key="i.path" v-ripple :to="i.path" clickable exact>

@@ -7,8 +7,6 @@ declare module "@vue/runtime-core" {
 }
 
 const cvObj = cv;
-console.log("cv", cv);
-console.log("cvObj", cvObj);
 
 export default boot(({ app }) => {
   app.config.globalProperties.$cvObj = cvObj;
