@@ -282,8 +282,8 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-6",
-    component: () => import("pages/_3_/_6_/ImageCannyPage.vue"),
+    path: "3-7",
+    component: () => import("pages/_3_/_7_/ImageCannyPage.vue"),
     meta: {
       title: "图像边缘 Canny",
       caption: "Image Canny Example",
