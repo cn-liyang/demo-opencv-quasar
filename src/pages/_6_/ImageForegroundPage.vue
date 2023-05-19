@@ -9,6 +9,8 @@ function doCv() {
   const gray = new cvObj.Mat();
   const opening = new cvObj.Mat();
   const coinsBg = new cvObj.Mat();
+  const coinsFg = new cvObj.Mat();
+  const distTrans = new cvObj.Mat();
   cvObj.cvtColor(src, gray, cvObj.COLOR_RGBA2GRAY, 0);
   cvObj.threshold(gray, gray, 0, 255, cvObj.THRESH_BINARY_INV + cvObj.THRESH_OTSU);
 
@@ -16,13 +18,19 @@ function doCv() {
   cvObj.erode(gray, gray, M);
   cvObj.dilate(gray, opening, M);
   cvObj.dilate(opening, coinsBg, M, new cvObj.Point(-1, -1), 3);
+  cvObj.distanceTransform(opening, distTrans, cvObj.DIST_L2, 5);
+  cvObj.normalize(distTrans, distTrans, 1, 0, cvObj.NORM_INF);
+  // get foreground
+  cvObj.threshold(distTrans, coinsFg, 0.7, 255, cvObj.THRESH_BINARY);
 
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, gray);
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, coinsFg);
   src.delete();
   dst.delete();
   gray.delete();
   opening.delete();
   coinsBg.delete();
+  coinsFg.delete();
+  distTrans.delete();
   M.delete();
 }
 </script>

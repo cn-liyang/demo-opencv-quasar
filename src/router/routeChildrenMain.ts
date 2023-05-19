@@ -435,7 +435,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
     path: "6-1",
     component: () => import("pages/_6_/ImageThresholdPage.vue"),
     meta: {
-      title: "图像分割分水岭阈值",
+      title: "图像分割阈值",
       caption: "Image Threshold Example",
       icon: "mdi-numeric-6-box-outline",
       link: "https://docs.opencv.org/4.5.0/d7/d1c/tutorial_js_watershed.html",
@@ -445,8 +445,38 @@ const routeChildrenMain: RouteRecordRaw[] = [
     path: "6-2",
     component: () => import("pages/_6_/ImageBackgroundPage.vue"),
     meta: {
-      title: "图像分割分水岭背景",
+      title: "图像分割背景",
       caption: "Image Background Example",
+      icon: "mdi-numeric-6-box-outline",
+      link: "https://docs.opencv.org/4.5.0/d7/d1c/tutorial_js_watershed.html",
+    },
+  },
+  {
+    path: "6-3",
+    component: () => import("pages/_6_/ImageForegroundPage.vue"),
+    meta: {
+      title: "图像分割前景",
+      caption: "Image Foreground Example",
+      icon: "mdi-numeric-6-box-outline",
+      link: "https://docs.opencv.org/4.5.0/d7/d1c/tutorial_js_watershed.html",
+    },
+  },
+  {
+    path: "6-4",
+    component: () => import("pages/_6_/ImageDistanceTransformPage.vue"),
+    meta: {
+      title: "图像分割距离变换",
+      caption: "Distance Transform Example",
+      icon: "mdi-numeric-6-box-outline",
+      link: "https://docs.opencv.org/4.5.0/d7/d1c/tutorial_js_watershed.html",
+    },
+  },
+  {
+    path: "6-5",
+    component: () => import("pages/_6_/ImageWatershedPage.vue"),
+    meta: {
+      title: "图像分割分水岭",
+      caption: "Image Watershed Example",
       icon: "mdi-numeric-6-box-outline",
       link: "https://docs.opencv.org/4.5.0/d7/d1c/tutorial_js_watershed.html",
     },
