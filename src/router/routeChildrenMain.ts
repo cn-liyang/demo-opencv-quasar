@@ -292,7 +292,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-7-1",
+    path: "3-8-1",
     component: () => import("pages/_3_/_8_/ImagePyrDownPage.vue"),
     meta: {
       title: "图像下金字塔",
@@ -302,7 +302,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
     },
   },
   {
-    path: "3-7-2",
+    path: "3-8-2",
     component: () => import("pages/_3_/_8_/ImagePyrUpPage.vue"),
     meta: {
       title: "图像上金字塔",
