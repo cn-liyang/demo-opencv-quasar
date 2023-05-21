@@ -491,6 +491,16 @@ const routeChildrenMain: RouteRecordRaw[] = [
       link: "https://docs.opencv.org/4.5.0/d8/dd1/tutorial_js_template_matching.html",
     },
   },
+  {
+    path: "91",
+    component: () => import("pages/_9/Card1Page.vue"),
+    meta: {
+      title: "证卡截图",
+      caption: "OpenCV.js Tutorials",
+      icon: "mdi-card-account-details-outline",
+      link: "https://docs.opencv.org/4.5.0/d5/d10/tutorial_js_root.html",
+    },
+  },
 ];
 
 export default routeChildrenMain;

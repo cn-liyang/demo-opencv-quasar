@@ -12,7 +12,7 @@ function doCv() {
       `\ntype: ${src.type()}`
   );
   const dst = new cvObj.Mat();
-  cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2RGB, 0);
+  cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2RGB);
   cvObj.bilateralFilter(src, dst, 9, 75, 75, cvObj.BORDER_DEFAULT);
   console.log(
     "dst image properties:" +

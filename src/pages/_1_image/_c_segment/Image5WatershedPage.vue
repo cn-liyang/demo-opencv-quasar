@@ -37,7 +37,7 @@ function doCv() {
       }
     }
   }
-  cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2RGB, 0);
+  cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2RGB);
   cvObj.watershed(src, markers);
   // draw barriers
   for (let i = 0; i < markers.rows; i++) {

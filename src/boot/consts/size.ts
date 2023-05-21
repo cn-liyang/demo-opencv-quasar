@@ -8,4 +8,4 @@ export const SIZE_INCH6_RATIO = SIZE_INCH6_WIDTH / SIZE_INCH6_HEIGHT;
 // ID photo
 export const SIZE_ID_RATIO = 1.58;
 //
-export const SIZE_SQUARE = 300;
+export const SIZE_SQUARE = 500;

@@ -6,6 +6,7 @@ const route = useRoute();
   <q-footer class="bg-secondary text-white" elevated reveal>
     <q-toolbar>
       <q-btn
+        v-if="route.meta?.link"
         :href="route.meta.link"
         :label="route.meta.link"
         dense
