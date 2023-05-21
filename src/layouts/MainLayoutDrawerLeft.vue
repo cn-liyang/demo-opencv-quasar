@@ -10,7 +10,7 @@
           </q-item-section>
           <q-item-section>
             <q-item-label>{{ i.meta.title }}</q-item-label>
-            <q-item-label caption>{{ i.meta.caption }}</q-item-label>
+            <q-item-label v-if="i.meta?.caption" caption>{{ i.meta.caption }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
