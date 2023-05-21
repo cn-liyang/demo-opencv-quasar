@@ -5,8 +5,9 @@ async function asyncCvIoImageFile(file: File) {
   const src = cvObj.imread(await asyncPicaImgFile2Canvas(file));
   const dst = new cvObj.Mat();
   cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2RGB);
-  cvObj.bilateralFilter(src, src, 9, 75, 75, cvObj.BORDER_DEFAULT);
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
+  cvObj.GaussianBlur(src, dst, new cvObj.Size(3, 3), 0, 0, cvObj.BORDER_DEFAULT);
+  
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
 }
 </script>
