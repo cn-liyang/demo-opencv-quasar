@@ -41,12 +41,14 @@ async function asyncCvIoImageFile(file: File) {
     tmp.delete();
   }
 
+  const rect = poly.get(0);
+
   cvObj.drawContours(src, poly, 0, new cvObj.Scalar(255, 0, 0), 1, cvObj.LINE_8, hierarchy, 0);
 
-  const rect = poly.get(0);
-  rect.cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
   src.delete();
   poly.delete();
+  rect.delete();
 }
 </script>
 
