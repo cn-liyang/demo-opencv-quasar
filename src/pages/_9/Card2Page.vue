@@ -3,28 +3,23 @@ import { Mat } from "opencv-ts";
 
 const outputId = "outputId";
 
-function doGray(src: Mat) {
+function doColor(src: Mat) {
   const gray = new cvObj.Mat();
   cvObj.cvtColor(src, gray, cvObj.COLOR_RGBA2GRAY);
   cvObj.GaussianBlur(gray, gray, new cvObj.Size(3, 3), 0, 0, cvObj.BORDER_DEFAULT);
   return gray;
 }
 
-function doEdge(gray: Mat) {
-  const edge = new cvObj.Mat();
-  cvObj.Canny(gray, edge, 50, 100);
-  return edge;
+function doEdges(gray: Mat) {
+  const edges = new cvObj.Mat();
+  cvObj.Canny(gray, edges, 50, 100);
+  return edges;
 }
 
-async function asyncCvIoImageFile(file: File) {
-  const src = cvObj.imread(await asyncPicaResizeImgFile500px2Canvas(file));
-  const gray = doGray(src);
-  const edge = doEdge(gray);
-
+function doPoly1(edges: Mat, rows: number, cols: number) {
   const contours = new cvObj.MatVector();
   const hierarchy = new cvObj.Mat();
-  cvObj.findContours(edge, contours, hierarchy, cvObj.RETR_LIST, cvObj.CHAIN_APPROX_SIMPLE);
-
+  cvObj.findContours(edges, contours, hierarchy, cvObj.RETR_LIST, cvObj.CHAIN_APPROX_SIMPLE);
   const contourArray = [];
   for (let i = 0; i < contours.size(); i++) {
     const _contour = contours.get(i);
@@ -43,20 +38,42 @@ async function asyncCvIoImageFile(file: File) {
     cvObj.approxPolyDP(cnt, tmp, arcLength * 0.01, true);
     if (tmp.total() === 4) {
       poly.push_back(cnt);
+      cnt.delete();
+      tmp.delete();
       break;
+    } else {
+      cnt.delete();
+      tmp.delete();
     }
-    cnt.delete();
-    tmp.delete();
   }
+  const dark = new cvObj.Mat.zeros(rows, cols, cvObj.CV_8UC3);
+  cvObj.fillPoly(dark, poly, new cvObj.Scalar(255, 0, 0));
+  contours.delete();
+  hierarchy.delete();
+  poly.delete();
+  return dark;
+}
 
-  // cvObj.drawContours(src, poly, 0, new cvObj.Scalar(255, 0, 0), 1, cvObj.LINE_8, hierarchy, 0);
-  const rect = poly.get(0);
-
-  const dst = new cvObj.Mat.zeros(src.rows, src.cols, cvObj.CV_8UC3);
+function doLines(edge1: Mat) {
   const lines = new cvObj.Mat();
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  cvObj.HoughLines(edge, lines, 1, Math.PI / 180, 30, 0, 0, 0, Math.PI); // core
+  cvObj.HoughLines(edge1, lines, 1, Math.PI / 180, 30, 0, 0, 0, Math.PI);
+  return lines;
+}
+
+async function asyncCvIoImageFile(file: File) {
+  const src = cvObj.imread(await asyncPicaResizeImgFile500px2Canvas(file));
+  const color = doColor(src);
+  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, color);
+  const edges = doEdges(color);
+  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, edges);
+  const poly1 = doPoly1(edges, src.rows, src.cols);
+  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, poly1);
+  const edge1 = doEdges(poly1);
+  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, edge1);
+  const lines = doLines(edge1);
+  const zeros = new cvObj.Mat.zeros(src.rows, src.cols, cvObj.CV_8UC3);
   for (let i = 0; i < lines.rows; ++i) {
     const rho = lines.data32F[i * 2];
     const theta = lines.data32F[i * 2 + 1];
@@ -64,20 +81,17 @@ async function asyncCvIoImageFile(file: File) {
     const b = Math.sin(theta);
     const x0 = a * rho;
     const y0 = b * rho;
-    const startPoint = { x: x0 - 1000 * b, y: y0 + 1000 * a };
-    const endPoint = { x: x0 + 1000 * b, y: y0 - 1000 * a };
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    cvObj.line(dst, startPoint, endPoint, [255, 0, 0, 255]);
+    const startPoint = new cvObj.Point(x0 - SIZE_500PX * b, y0 + SIZE_500PX * a);
+    const endPoint = new cvObj.Point(x0 + SIZE_500PX * b, y0 - SIZE_500PX * a);
+    cvObj.line(zeros, startPoint, endPoint, new cvObj.Scalar(255, 0, 0));
   }
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, zeros);
+  zeros.delete();
 
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
-  gray.delete();
-  edge.delete();
-  poly.delete();
-  rect.delete();
-  dst.delete();
+  color.delete();
+  edges.delete();
+  poly1.delete();
 }
 </script>
 
