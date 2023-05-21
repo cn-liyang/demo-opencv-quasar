@@ -6,9 +6,10 @@ async function asyncCvIoImageFile(file: File) {
   const dst = new cvObj.Mat();
   cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2RGB);
   cvObj.GaussianBlur(src, dst, new cvObj.Size(3, 3), 0, 0, cvObj.BORDER_DEFAULT);
-  
+
   cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   src.delete();
+  dst.delete();
 }
 </script>
 
