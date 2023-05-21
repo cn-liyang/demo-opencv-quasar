@@ -35,3 +35,11 @@ quasar build
 ### Customize the configuration
 
 See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+
+## Solve some problems
+
+Git: `OpenSSL SSL_read: Connection was reset, errno 10054`
+
+```bash
+git config --global http.sslVerify "false"
+```
