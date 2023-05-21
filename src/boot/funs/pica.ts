@@ -44,13 +44,13 @@ async function asyncPicaResizeImgFile2Canvas(file: File | Blob) {
   return await picaReducer.toCanvas(file, _getOptions(max));
 }
 
-async function asyncPicaImgFile2Canvas(file: File | Blob) {
-  return await picaReducer.toCanvas(file, _getOptions(SIZE_SQUARE));
+async function asyncPicaResizeImgFile500px2Canvas(file: File | Blob) {
+  return await picaReducer.toCanvas(file, _getOptions(SIZE_500PX));
 }
 
 export {
   asyncPicaResizeCanvas2Blob,
   asyncPicaResizeImgFile2Blob,
   asyncPicaResizeImgFile2Canvas,
-  asyncPicaImgFile2Canvas,
+  asyncPicaResizeImgFile500px2Canvas,
 };

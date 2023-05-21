@@ -317,7 +317,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
     meta: {
       title: "图像边缘检测",
       caption: "Image Contours Example",
-      icon: "mdi-decagram-outline",
+      icon: "mdi-octagon-outline",
       link: "https://docs.opencv.org/4.5.0/d5/daa/tutorial_js_contours_begin.html",
     },
   },
@@ -327,7 +327,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
     meta: {
       title: "图像边缘近似多边",
       caption: "Image ApproxPolyDP Example",
-      icon: "mdi-octagram-outline",
+      icon: "mdi-hexagon-outline",
       link: "https://docs.opencv.org/4.5.0/dc/dcf/tutorial_js_contour_features.html",
     },
   },
@@ -337,7 +337,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
     meta: {
       title: "图像边缘凸出外壳",
       caption: "Convex Hull Example",
-      icon: "mdi-octagon-outline",
+      icon: "mdi-pentagon-outline",
       link: "https://docs.opencv.org/4.5.0/dc/dcf/tutorial_js_contour_features.html",
     },
   },
