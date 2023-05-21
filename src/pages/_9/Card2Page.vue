@@ -1,15 +1,25 @@
 <script lang="ts" setup>
+import { Mat } from "opencv-ts";
+
 const outputId = "outputId";
 
-async function asyncCvIoImageFile(file: File) {
-  const src = cvObj.imread(await asyncPicaResizeImgFile500px2Canvas(file));
-
+function doGray(src: Mat) {
   const gray = new cvObj.Mat();
   cvObj.cvtColor(src, gray, cvObj.COLOR_RGBA2GRAY);
   cvObj.GaussianBlur(gray, gray, new cvObj.Size(3, 3), 0, 0, cvObj.BORDER_DEFAULT);
+  return gray;
+}
 
+function doEdge(gray: Mat) {
   const edge = new cvObj.Mat();
   cvObj.Canny(gray, edge, 50, 100);
+  return edge;
+}
+
+async function asyncCvIoImageFile(file: File) {
+  const src = cvObj.imread(await asyncPicaResizeImgFile2Canvas(file));
+  const gray = doGray(src);
+  const edge = doEdge(gray);
   gray.delete();
 
   const contours = new cvObj.MatVector();
@@ -34,19 +44,24 @@ async function asyncCvIoImageFile(file: File) {
     const arcLength = cvObj.arcLength(cnt, true);
     cvObj.approxPolyDP(cnt, tmp, arcLength * 0.01, true);
     if (tmp.total() === 4) {
-      poly.push_back(tmp);
+      poly.push_back(cnt);
       break;
     }
     cnt.delete();
     tmp.delete();
   }
 
+  const rect = poly.get(0);
+
+  // const dst = new cvObj.Mat.zeros(rect.rows, rect.cols, cvObj.CV_8UC3);
+  // const lines = new cvObj.Mat();
+
   cvObj.drawContours(src, poly, 0, new cvObj.Scalar(255, 0, 0), 1, cvObj.LINE_8, hierarchy, 0);
 
-  const rect = poly.get(0);
-  rect.cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
   src.delete();
   poly.delete();
+  rect.delete();
 }
 </script>
 
