@@ -335,7 +335,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
     path: "1a3",
     component: () => import("pages/_1_image/_a_contour/Image3ContoursConvexHullPage.vue"),
     meta: {
-      title: "图像边缘凸出外壳",
+      title: "图像边缘最小凸包",
       caption: "Convex Hull Example",
       icon: "mdi-pentagon-outline",
       link: "https://docs.opencv.org/4.5.0/dc/dcf/tutorial_js_contour_features.html",
@@ -495,7 +495,17 @@ const routeChildrenMain: RouteRecordRaw[] = [
     path: "91",
     component: () => import("pages/_9/Card1Page.vue"),
     meta: {
-      title: "证卡截图",
+      title: "证卡截图1",
+      caption: "OpenCV.js Tutorials",
+      icon: "mdi-card-account-details-outline",
+      link: "https://docs.opencv.org/4.5.0/d5/d10/tutorial_js_root.html",
+    },
+  },
+  {
+    path: "92",
+    component: () => import("pages/_9/Card2Page.vue"),
+    meta: {
+      title: "证卡截图2",
       caption: "OpenCV.js Tutorials",
       icon: "mdi-card-account-details-outline",
       link: "https://docs.opencv.org/4.5.0/d5/d10/tutorial_js_root.html",

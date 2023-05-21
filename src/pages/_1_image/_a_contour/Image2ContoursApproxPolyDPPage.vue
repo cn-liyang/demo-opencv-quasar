@@ -19,7 +19,7 @@ function doCv() {
     cnt.delete();
     tmp.delete();
   }
-  for (let i = 0; i < contours.size(); ++i) {
+  for (let i = 0; i < poly.size(); ++i) {
     const color = new cvObj.Scalar(
       Math.round(Math.random() * 255),
       Math.round(Math.random() * 255),
