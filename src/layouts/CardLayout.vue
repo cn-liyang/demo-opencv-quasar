@@ -1,5 +1,5 @@
 <template>
-  <q-card :style="`max-width: ${$size500px}px;max-height: ${$size500px}px`" bordered flat>
+  <q-card :style="`max-width: ${$length500}px;max-height: ${$length500}px`" bordered flat>
     <slot />
   </q-card>
 </template>

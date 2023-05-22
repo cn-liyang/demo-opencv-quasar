@@ -2,10 +2,10 @@ import { EMimeImageType } from "boot/enums/mime";
 
 function _resizeRect(fromWidth: number, fromHeight: number) {
   const fromRatio = fromWidth / fromHeight;
-  if (fromRatio > SIZE_INCH6_RATIO) {
-    return { toWidth: SIZE_INCH6_WIDTH, toHeight: SIZE_INCH6_HEIGHT * fromRatio };
+  if (fromRatio > SIZE_INCH6_R) {
+    return { toWidth: SIZE_INCH6_W, toHeight: SIZE_INCH6_H * fromRatio };
   } else {
-    return { toWidth: SIZE_INCH6_WIDTH / fromRatio, toHeight: SIZE_INCH6_HEIGHT };
+    return { toWidth: SIZE_INCH6_W / fromRatio, toHeight: SIZE_INCH6_H };
   }
 }
 
@@ -45,7 +45,7 @@ async function asyncPicaResizeImgFile2Canvas(file: File | Blob) {
 }
 
 async function asyncPicaResizeImgFile500px2Canvas(file: File | Blob) {
-  return await picaReducer.toCanvas(file, _getOptions(SIZE_500PX));
+  return await picaReducer.toCanvas(file, _getOptions(LENGTH_500));
 }
 
 export {

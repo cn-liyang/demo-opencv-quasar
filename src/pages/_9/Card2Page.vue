@@ -14,8 +14,8 @@ class Line {
     const b = Math.sin(theta);
     const x0 = a * rho;
     const y0 = b * rho;
-    this.startPoint = new cvObj.Point(x0 - SIZE_500PX * b, y0 + SIZE_500PX * a);
-    this.endPoint = new cvObj.Point(x0 + SIZE_500PX * b, y0 - SIZE_500PX * a);
+    this.startPoint = new cvObj.Point(x0 - LENGTH_500 * b, y0 + LENGTH_500 * a);
+    this.endPoint = new cvObj.Point(x0 + LENGTH_500 * b, y0 - LENGTH_500 * a);
   }
 }
 
