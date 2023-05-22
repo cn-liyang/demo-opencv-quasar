@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { Point } from "opencv-ts";
 import { cvObj } from "boot/opcv";
+import { SIZE_ID_W } from "boot/consts/size";
 
 const outputId = "outputId";
 
@@ -23,21 +24,27 @@ async function asyncCvIoImageFile(file: File) {
   // cvObj.drawContours(src, polysD, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
   const rotatedRect = doMinAreaRect(polysD);
-  console.log("rotatedRect", rotatedRect);
-  const vertices = cvObj.RotatedRect.points(rotatedRect);
-  console.log("vertices", vertices);
+  /*const vertices = cvObj.RotatedRect.points(rotatedRect);
   cvObj.drawContours(src, polysD, 0, new cvObj.Scalar(0, 255, 0, 255), 1, cvObj.LINE_8);
   for (let i = 0; i < 4; i++) {
-    console.log(i, (i + 1) % 4);
-    console.log(vertices[i], vertices[(i + 1) % 4]);
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     cvObj.line(src, vertices[i], vertices[(i + 1) % 4], new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_AA, 0); // core
   }
-  cvObj.circle(src, vertices[0], 1, new cvObj.Scalar(0, 0, 255, 255), 1);
-  cvObj.circle(src, vertices[1], 2, new cvObj.Scalar(0, 0, 255, 255), 2);
-  cvObj.circle(src, vertices[2], 3, new cvObj.Scalar(0, 0, 255, 255), 3);
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);*/
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const [tl, tr, br, bl] = cvObj.RotatedRect.points(rotatedRect);
+  console.log("tl, tr, br, bl", tl, tr, br, bl);
+  const maxW = Math.abs(tl.x - tr.x);
+  const maxH = Math.abs(tr.y - br.y);
+  const srcTri = cvObj.matFromArray(4, 1, cvObj.CV_32FC2, [tl.x, tl.y, tr.x, tr.y, br.x, br.y, bl.x, bl.y]);
+  const dstTri = cvObj.matFromArray(4, 1, cvObj.CV_32FC2, [0, 0, maxW - 1, 0, maxW - 1, maxH - 1, 0, maxH - 1]);
+  const M = cvObj.getPerspectiveTransform(srcTri, dstTri);
+  const dst = new cvObj.Mat();
+  cvObj.warpPerspective(src, dst, M, new cvObj.Size(maxW, maxH), cvObj.INTER_LINEAR, cvObj.BORDER_CONSTANT);
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   const polyD = doPolyDP(edgesD);
   // cvObj.drawContours(src, polysD, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
