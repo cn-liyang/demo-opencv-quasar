@@ -6,8 +6,8 @@ export const SIZE_INCH6_W = 400;
 export const SIZE_INCH6_H = 600;
 export const SIZE_INCH6_R = 2 / 3;
 // ID photo
-export const SIZE_ID_W = 316;
-export const SIZE_ID_H = 200;
-export const SIZE_ID_R = 79 / 50;
+export const SIZE_ID_W = 395;
+export const SIZE_ID_H = 250;
+export const SIZE_ID_R = 158 / 100;
 //
 export const LENGTH_500 = 500;

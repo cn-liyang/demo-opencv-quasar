@@ -193,7 +193,7 @@ async function asyncCvIoImageFile(file: File) {
   const edges = doEdges(color);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, edges);
   const polyC = doPolyContour(edges);
-  // cvObj.drawContours(src, polyC, 0, new cvObj.Scalar(255, 0, 0), 1, cvObj.LINE_8);
+  // cvObj.drawContours(src, polyC, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
   const fillP = doFillPoly(polyC, src.size());
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, fillP);
@@ -202,8 +202,22 @@ async function asyncCvIoImageFile(file: File) {
   const edge1 = doEdges(dlted);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, edge1);
   const polyD = doPolyDP(edge1);
-  // cvObj.drawContours(src, polyD, 0, new cvObj.Scalar(255, 0, 0), 1, cvObj.LINE_8);
+  // cvObj.drawContours(src, polyD, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
+  const poly1 = polyD.get(0);
+  console.log("edge1", edge1.size());
+  const { maxLoc } = cvObj.minMaxLoc(edge1);
+  cvObj.rectangle(
+    src,
+    maxLoc,
+    new cvObj.Point(maxLoc.x + 50, maxLoc.y + 50),
+    new cvObj.Scalar(255, 0, 0, 255),
+    1,
+    cvObj.LINE_8,
+    0
+  );
+  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
+  // poly1.reshape(4, 2);
 
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dilate);
   // const edge1 = doEdges(polyC);
@@ -213,7 +227,10 @@ async function asyncCvIoImageFile(file: File) {
   color.delete();
   edges.delete();
   polyC.delete();
-  dilate.delete();
+  dlted.delete();
+  edge1.delete();
+  polyD.delete();
+  poly1.delete();
 }
 </script>
 
