@@ -12,6 +12,7 @@ function doCv() {
   cvObj.findContours(src, contours, hierarchy, cvObj.RETR_CCOMP, cvObj.CHAIN_APPROX_SIMPLE);
   const cnt = contours.get(0);
   const ellipse = cvObj.fitEllipse(cnt); // core
+  console.log("ellipse", ellipse);
   const contoursColor = new cvObj.Scalar(0, 255, 0);
   const ellipseColor = new cvObj.Scalar(255, 0, 0);
   cvObj.drawContours(dst, contours, 0, contoursColor, 1, cvObj.LINE_8, hierarchy, 100);
