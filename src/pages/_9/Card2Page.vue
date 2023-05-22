@@ -3,23 +3,38 @@ const outputId = "outputId";
 
 async function asyncCvIoImageFile(file: File) {
   const src = cvObj.imread(await asyncResizeImgFile2Canvas(file));
-  const color = doColor(src);
-  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, color);
-  const edges = doEdges(color);
-  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, edges);
-  const polyC = doPolyContour(edges);
-  // cvObj.drawContours(src, polyC, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
+  const colorg = doColor(src);
+  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, colorg);
+  const edges0 = doEdges(colorg);
+  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, edges0);
+  const polys0 = doPolyContour(edges0);
+  // cvObj.drawContours(src, polys0, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
-  const fillC = doFillPoly(polyC, src.size());
-  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, fillC);
-  const diltC = doDilate(fillC);
+  const filled = doFillPoly(polys0, src.size());
+  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, filled);
+  const dilate = doDilate(filled);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dlteP);
-  const edgeC = doEdges(diltC);
-  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, edgeC);
-  const polyP = doPolyDP(edgeC);
-  // cvObj.drawContours(src, polyP, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
+  const edgesD = doEdges(dilate);
+  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, edgesD);
+  const polysD = doPolyContour(edgesD);
+  // cvObj.drawContours(src, polysD, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
-  /* const mat = polyP.get(0);
+  const rotatedRect = doMinAreaRect(polysD);
+  console.log("rotatedRect", rotatedRect);
+  const vertices = cvObj.RotatedRect.points(rotatedRect);
+  console.log("vertices", vertices);
+  cvObj.drawContours(src, polysD, 0, new cvObj.Scalar(0, 255, 0, 255), 1, cvObj.LINE_8);
+  for (let i = 0; i < 4; i++) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    cvObj.line(src, vertices[i], vertices[(i + 1) % 4], new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_AA, 0); // core
+  }
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
+  const polyD = doPolyDP(edgesD);
+  // cvObj.drawContours(src, polysD, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
+  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
+
+  /* const mat = polysD.get(0);
   const uint8s = mat.data.filter((_, idx) => idx % 4 === 0);
   console.log("uint8s", uint8s);
   const point1 = new cvObj.Point(uint8s[0], uint8s[1]);
@@ -33,8 +48,8 @@ async function asyncCvIoImageFile(file: File) {
   cvObj.circle(src, point4, 4, new cvObj.Scalar(255, 0, 0, 255));
   cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src); */
   src.delete();
-  color.delete();
-  edges.delete();
+  colorg.delete();
+  edges0.delete();
 }
 </script>
 

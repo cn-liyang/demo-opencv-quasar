@@ -85,6 +85,13 @@ function doDilate(polyV: Mat) {
   return dilate;
 }
 
+function doMinAreaRect(polysD: MatVector) {
+  const poly = polysD.get(0);
+  const rotatedRect = cvObj.minAreaRect(poly);
+  poly.delete();
+  return rotatedRect;
+}
+
 function doPolyDP(edges: Mat) {
   const { contours, contourArray } = _filterContours(edges);
   const polys = new cvObj.MatVector();
@@ -141,6 +148,7 @@ export {
   doPolyContour,
   doFillPoly,
   doDilate,
+  doMinAreaRect,
   doPolyDP,
   doLines,
   doLinesP,
