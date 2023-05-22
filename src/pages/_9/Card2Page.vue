@@ -1,5 +1,23 @@
 <script lang="ts" setup>
-import { Mat } from "opencv-ts";
+import { Mat, Point } from "opencv-ts";
+
+class Line {
+  rho: number;
+  theta: number;
+  startPoint: Point;
+  endPoint: Point;
+
+  constructor(rho: number, theta: number) {
+    this.rho = rho;
+    this.theta = theta;
+    const a = Math.cos(theta);
+    const b = Math.sin(theta);
+    const x0 = a * rho;
+    const y0 = b * rho;
+    this.startPoint = new cvObj.Point(x0 - SIZE_500PX * b, y0 + SIZE_500PX * a);
+    this.endPoint = new cvObj.Point(x0 + SIZE_500PX * b, y0 - SIZE_500PX * a);
+  }
+}
 
 const outputId = "outputId";
 
@@ -55,11 +73,18 @@ function doPoly1(edges: Mat, rows: number, cols: number) {
 }
 
 function doLines(edge1: Mat) {
+  const linea = [];
   const lines = new cvObj.Mat();
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   cvObj.HoughLines(edge1, lines, 1, Math.PI / 180, 30, 0, 0, 0, Math.PI);
-  return lines;
+  for (let i = 0; i < lines.rows; ++i) {
+    const rho = lines.data32F[i * 2];
+    const theta = lines.data32F[i * 2 + 1];
+    console.log("Line", rho, theta);
+    linea.push(new Line(rho, theta));
+  }
+  return linea;
 }
 
 async function asyncCvIoImageFile(file: File) {
@@ -73,20 +98,24 @@ async function asyncCvIoImageFile(file: File) {
   const edge1 = doEdges(poly1);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, edge1);
   const lines = doLines(edge1);
-  const zeros = new cvObj.Mat.zeros(src.rows, src.cols, cvObj.CV_8UC3);
-  for (let i = 0; i < lines.rows; ++i) {
-    const rho = lines.data32F[i * 2];
-    const theta = lines.data32F[i * 2 + 1];
-    const a = Math.cos(theta);
-    const b = Math.sin(theta);
-    const x0 = a * rho;
-    const y0 = b * rho;
-    const startPoint = new cvObj.Point(x0 - SIZE_500PX * b, y0 + SIZE_500PX * a);
-    const endPoint = new cvObj.Point(x0 + SIZE_500PX * b, y0 - SIZE_500PX * a);
-    cvObj.line(zeros, startPoint, endPoint, new cvObj.Scalar(255, 0, 0));
+  /* const dark = new cvObj.Mat.zeros(src.rows, src.cols, cvObj.CV_8UC3);
+  lines.forEach((i) => {
+    cvObj.line(dark, i.startPoint, i.endPoint, new cvObj.Scalar(255, 0, 0));
+  });
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dark);
+  dark.delete(); */
+  const points = [];
+  for (let i = 0; i < lines.length; i++) {
+    for (let j = i + 1; j < lines.length; j++) {
+      if (Math.abs(lines[i].theta - lines[j].theta) < 0.5) {
+        return;
+      }
+      /* let point = getIntersection(lines[i], lines[j]);
+      if (point) {
+        points.push(point);
+      } */
+    }
   }
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, zeros);
-  zeros.delete();
 
   src.delete();
   color.delete();
