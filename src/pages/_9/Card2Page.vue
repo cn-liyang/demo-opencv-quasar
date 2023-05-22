@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import { Point } from "opencv-ts";
+import { cvObj } from "boot/opcv";
+
 const outputId = "outputId";
 
 async function asyncCvIoImageFile(file: File) {
@@ -25,10 +28,15 @@ async function asyncCvIoImageFile(file: File) {
   console.log("vertices", vertices);
   cvObj.drawContours(src, polysD, 0, new cvObj.Scalar(0, 255, 0, 255), 1, cvObj.LINE_8);
   for (let i = 0; i < 4; i++) {
+    console.log(i, (i + 1) % 4);
+    console.log(vertices[i], vertices[(i + 1) % 4]);
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     cvObj.line(src, vertices[i], vertices[(i + 1) % 4], new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_AA, 0); // core
   }
+  cvObj.circle(src, vertices[0], 1, new cvObj.Scalar(0, 0, 255, 255), 1);
+  cvObj.circle(src, vertices[1], 2, new cvObj.Scalar(0, 0, 255, 255), 2);
+  cvObj.circle(src, vertices[2], 3, new cvObj.Scalar(0, 0, 255, 255), 3);
   cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
   const polyD = doPolyDP(edgesD);
   // cvObj.drawContours(src, polysD, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
