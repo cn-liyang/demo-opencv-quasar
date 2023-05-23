@@ -8,17 +8,19 @@ async function asyncCvIoImageFile(file: File) {
   const colorg = doColor(src);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, colorg);
   const edgesA = doEdges(colorg);
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, edgesA);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), edgesA);
   const polys0 = doPolyContour(edgesA);
-  // cvObj.drawContours(src, polys0, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
-  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
+  /* cvObj.drawContours(src, polys0, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src); */
   const filled = doFillPoly(polys0, src.size());
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, filled);
   const dilate = doDilate(filled);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dlteP);
   const edgesD = doEdges(dilate);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, edgesD);
-
+  const linesD = doLines(edgesD);
+  /* linesD.forEach((i) => cvObj.line(src, i.startPoint, i.endPoint, new cvObj.Scalar(255, 0, 0, 255)));
+  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src); */
   /* const mat = polysD.get(0);
   const uint8s = mat.data.filter((_, idx) => idx % 4 === 0);
   console.log("uint8s", uint8s);

@@ -3,12 +3,12 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = cvObj.imread(<HTMLImageElement>document.getElementById(inputId));
   const dst = new cvObj.Mat();
   cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2GRAY, 0);
   cvObj.threshold(src, src, 120, 200, cvObj.THRESH_BINARY);
   cvObj.transpose(src, dst);
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), dst);
   src.delete();
   dst.delete();
 }

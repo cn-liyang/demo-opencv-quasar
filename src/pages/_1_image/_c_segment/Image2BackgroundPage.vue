@@ -4,7 +4,7 @@ const inputTplId = "inputTplId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = cvObj.imread(<HTMLImageElement>document.getElementById(inputId));
   const dst = new cvObj.Mat();
   const gray = new cvObj.Mat();
   const opening = new cvObj.Mat();
@@ -17,7 +17,7 @@ function doCv() {
   cvObj.dilate(gray, opening, M);
   cvObj.dilate(opening, coinsBg, M, new cvObj.Point(-1, -1), 3);
 
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, gray);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), gray);
   src.delete();
   dst.delete();
   gray.delete();

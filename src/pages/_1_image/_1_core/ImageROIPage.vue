@@ -3,7 +3,7 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = cvObj.imread(<HTMLImageElement>document.getElementById(inputId));
   console.log(
     "src image properties:" +
       `\nwidth: ${src.cols},` +
@@ -16,7 +16,7 @@ function doCv() {
   const rect = new cvObj.Rect(100, 100, 100, 100);
   const clo = src.clone();
   const dst = clo.roi(rect);
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), dst);
   src.delete();
   dst.delete();
 }

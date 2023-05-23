@@ -3,7 +3,7 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = cvObj.imread(<HTMLImageElement>document.getElementById(inputId));
   console.log(
     "src image properties:" +
       `\nsize: ${src.size().width}*${src.size().height},` +
@@ -21,7 +21,7 @@ function doCv() {
       `\nchannels: ${dst.channels()},` +
       `\ntype: ${dst.type()}`
   );
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), dst);
   src.delete();
   dst.delete();
   M.delete();

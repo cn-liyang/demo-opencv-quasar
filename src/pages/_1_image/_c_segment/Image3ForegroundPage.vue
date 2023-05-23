@@ -4,7 +4,7 @@ const inputTplId = "inputTplId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = cvObj.imread(<HTMLImageElement>document.getElementById(inputId));
   const dst = new cvObj.Mat();
   const gray = new cvObj.Mat();
   const opening = new cvObj.Mat();
@@ -23,7 +23,7 @@ function doCv() {
   // get foreground
   cvObj.threshold(distTrans, coinsFg, 0.7, 255, cvObj.THRESH_BINARY);
 
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, coinsFg);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), coinsFg);
   src.delete();
   dst.delete();
   gray.delete();

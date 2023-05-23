@@ -3,7 +3,7 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = cvObj.imread(<HTMLImageElement>document.getElementById(inputId));
   const dst = new cvObj.Mat.zeros(src.cols, src.rows, cvObj.CV_8UC3);
   cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2GRAY, 0);
   cvObj.threshold(src, src, 120, 200, cvObj.THRESH_BINARY);
@@ -27,7 +27,7 @@ function doCv() {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   cvObj.line(dst, point1, point2, lineColor, 2, cvObj.LINE_AA, 0); // core
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), dst);
   src.delete();
   dst.delete();
   contours.delete();

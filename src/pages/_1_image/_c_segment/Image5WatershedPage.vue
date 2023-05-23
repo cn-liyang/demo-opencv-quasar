@@ -4,7 +4,7 @@ const inputTplId = "inputTplId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = cvObj.imread(<HTMLImageElement>document.getElementById(inputId));
   const dst = new cvObj.Mat();
   const gray = new cvObj.Mat();
   const opening = new cvObj.Mat();
@@ -49,7 +49,7 @@ function doCv() {
       }
     }
   }
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), src);
   src.delete();
   dst.delete();
   gray.delete();

@@ -11,7 +11,7 @@ export default createGlobalState(() => {
   }
 
   function getQPageElementSize() {
-    return getRef(model) as ISize;
+    return <ISize>getRef(model);
   }
 
   function setQPageElementWidth(width: number) {

@@ -17,7 +17,7 @@ export default createGlobalState(() => {
   }
 
   function getQBtnElementSize() {
-    return getRef(model) as IBounding;
+    return <IBounding>getRef(model);
   }
 
   return {

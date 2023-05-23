@@ -4,8 +4,8 @@ const inputTplId = "inputTplId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
-  const tpl = cvObj.imread(document.getElementById(inputTplId) as HTMLImageElement);
+  const src = cvObj.imread(<HTMLImageElement>document.getElementById(inputId));
+  const tpl = cvObj.imread(<HTMLImageElement>document.getElementById(inputTplId));
   const dst = new cvObj.Mat();
   const mask = new cvObj.Mat();
   cvObj.matchTemplate(src, tpl, dst, cvObj.TM_CCOEFF, mask);
@@ -14,7 +14,7 @@ function doCv() {
   const color = new cvObj.Scalar(255, 0, 0, 255);
   const point = new cvObj.Point(maxPoint.x + tpl.cols, maxPoint.y + tpl.rows);
   cvObj.rectangle(src, maxPoint, point, color, 1, cvObj.LINE_8, 0);
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), src);
   src.delete();
   dst.delete();
   mask.delete();

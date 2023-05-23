@@ -4,7 +4,7 @@ const inputTplId = "inputTplId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = cvObj.imread(<HTMLImageElement>document.getElementById(inputId));
   const dst = new cvObj.Mat();
   const gray = new cvObj.Mat();
   const opening = new cvObj.Mat();
@@ -21,7 +21,7 @@ function doCv() {
   cvObj.distanceTransform(opening, distTrans, cvObj.DIST_L2, 5);
   cvObj.normalize(distTrans, distTrans, 1, 0, cvObj.NORM_INF);
 
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, distTrans);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), distTrans);
   src.delete();
   dst.delete();
   gray.delete();

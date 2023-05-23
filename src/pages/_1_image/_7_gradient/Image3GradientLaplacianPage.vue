@@ -3,11 +3,11 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = cvObj.imread(<HTMLImageElement>document.getElementById(inputId));
   const dst = new cvObj.Mat();
   cvObj.cvtColor(src, src, cvObj.COLOR_RGB2GRAY, 0);
   cvObj.Laplacian(src, dst, cvObj.CV_8U, 1, 1, 0, cvObj.BORDER_DEFAULT);
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), dst);
   src.delete();
   dst.delete();
 }

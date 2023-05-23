@@ -1,4 +1,4 @@
-import { Mat, MatVector, Size } from "opencv-ts";
+import { Mat, MatVector, Point, Size } from "opencv-ts";
 import { Line, LinePoint } from "src/types/opcv";
 
 let imgFileArea = 0;
@@ -116,13 +116,15 @@ function doPolyDP(edges: Mat) {
 function doLines(edges: Mat) {
   const linea: Line[] = [];
   const lines = new cvObj.Mat();
-  cvObj.HoughLines(edges, lines, 1, Math.PI / 180, 30);
+  cvObj.HoughLines(edges, lines, 1, Math.PI / 180, 40);
   for (let i = 0; i < lines.rows; ++i) {
     const rho = lines.data32F[i * 2];
     const theta = lines.data32F[i * 2 + 1];
     linea.push(new Line(rho, theta));
   }
   lines.delete();
+  // FIXME
+  getClusterPoints(getCrossPoints(linea));
   return linea;
 }
 
@@ -139,6 +141,88 @@ function doLinesP(edges: Mat) {
   }
   lines.delete();
   return linea;
+}
+
+function _getCrossPoint(l1: Line, l2: Line) {
+  if (Math.abs(l1.theta - l2.theta) < Math.PI / 8) {
+    return;
+  }
+  // y = a * x + b
+  const a1 =
+    Math.abs(l1.startPoint.x - l1.endPoint.x) < Number.EPSILON
+      ? 0
+      : (l1.startPoint.y - l1.endPoint.y) / (l1.startPoint.x - l1.endPoint.x);
+  const b1 = l1.startPoint.y - a1 * l1.startPoint.x;
+  const a2 =
+    Math.abs(l2.startPoint.x - l2.endPoint.x) < Number.EPSILON
+      ? 0
+      : (l2.startPoint.y - l2.endPoint.y) / (l2.startPoint.x - l2.endPoint.x);
+  const b2 = l2.startPoint.y - a2 * l2.startPoint.x;
+  if (Math.abs(a2 - a1) > Number.EPSILON) {
+    const x = (b1 - b2) / (a2 - a1);
+    const y = a1 * x + b1;
+    return new cvObj.Point(x, y);
+  }
+}
+
+function getCrossPoints(lines: Line[]) {
+  const points: Point[] = [];
+  for (let i = 0; i < lines.length; i++) {
+    for (let j = i + 1; j < lines.length; j++) {
+      const point = _getCrossPoint(lines[i], lines[j]);
+      if (point) {
+        points.push(point);
+      }
+    }
+  }
+  return points;
+}
+
+function _isNearDist(p1: Point, p2: Point) {
+  const x = Math.abs(p1.x - p2.x);
+  const y = Math.abs(p1.y - p2.y);
+  const dist = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+  const sqrt = Math.sqrt(imgFileArea);
+  console.log("sqrt / 100", sqrt / 100);
+  return dist < sqrt / 100;
+}
+
+function getClusterPoints(points: Point[]) {
+  const pointsCenter = {
+    x: points.reduce((sum, cur) => sum + cur.x, 0) / points.length,
+    y: points.reduce((sum, cur) => sum + cur.y, 0) / points.length,
+  };
+  points.sort((p1, p2) => {
+    const theta1 = Math.atan((p1.y - pointsCenter.y) / (p1.x - pointsCenter.x || 0.01));
+    const theta2 = Math.atan((p2.y - pointsCenter.y) / (p2.x - pointsCenter.x || 0.01));
+    return theta1 - theta2;
+  });
+  const clusters: Point[][] = [[]];
+  for (let i = 1; i < points.length; i++) {
+    if (_isNearDist(points[i], points[i - 1])) {
+      clusters[clusters.length - 1].push(points[i]);
+    } else {
+      clusters.push([points[i]]);
+    }
+  }
+  const point4 = clusters
+    .sort((c1, c2) => c2.length - c1.length)
+    .slice(0, 4)
+    .map((i) => {
+      const x = ~~(i.reduce((sum, cur) => sum + cur.x, 0) / i.length);
+      const y = ~~(i.reduce((sum, cur) => sum + cur.y, 0) / i.length);
+      return new cvObj.Point(x, y);
+    });
+  const cluster4Center = {
+    x: point4.reduce((sum, cur) => sum + cur.x, 0) / 4,
+    y: point4.reduce((sum, cur) => sum + cur.y, 0) / 4,
+  };
+  const vertex: Point[] = [];
+  vertex.push(<Point>point4.find((i) => i.x < cluster4Center.x && i.y < cluster4Center.y));
+  vertex.push(<Point>point4.find((i) => i.x > cluster4Center.x && i.y < cluster4Center.y));
+  vertex.push(<Point>point4.find((i) => i.x > cluster4Center.x && i.y > cluster4Center.y));
+  vertex.push(<Point>point4.find((i) => i.x < cluster4Center.x && i.y > cluster4Center.y));
+  return vertex;
 }
 
 export {

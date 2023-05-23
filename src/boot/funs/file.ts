@@ -29,7 +29,7 @@ function asyncAltImgFile2Base64Url(file: File | Blob): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = (e) => resolve((e.target?.result as string) || "");
+    reader.onload = (e) => resolve(<string>e.target?.result || "");
     reader.onerror = (e) => reject(e);
   });
 }

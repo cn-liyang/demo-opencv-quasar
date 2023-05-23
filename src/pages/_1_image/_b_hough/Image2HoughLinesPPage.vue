@@ -3,7 +3,7 @@ const inputId = "inputId";
 const outputId = "outputId";
 
 function doCv() {
-  const src = cvObj.imread(document.getElementById(inputId) as HTMLImageElement);
+  const src = cvObj.imread(<HTMLImageElement>document.getElementById(inputId));
   const dst = new cvObj.Mat.zeros(src.rows, src.cols, cvObj.CV_8UC3);
   const lines = new cvObj.Mat();
   cvObj.cvtColor(src, src, cvObj.COLOR_RGBA2GRAY, 0);
@@ -17,7 +17,7 @@ function doCv() {
     const color = new cvObj.Scalar(255, 0, 0);
     cvObj.line(dst, startPoint, endPoint, color);
   }
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), dst);
   src.delete();
   dst.delete();
 }
