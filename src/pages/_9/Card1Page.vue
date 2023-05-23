@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 const outputId = "outputId";
+const hiddenId = "hiddenId";
 
 async function asyncCvImageFile(file: File) {
   const src = cvObj.imread(await asyncResizeImgFile2Canvas(file));
@@ -21,11 +22,14 @@ async function asyncCvImageFile(file: File) {
   cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), src); */
   const warped = doWarp(linesD, src);
   // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), warped);
+  const canvas = <HTMLCanvasElement>document.getElementById(hiddenId);
+  cvObj.imshow(canvas, warped);
+  const blobOt = await asyncPicaResizeCanvasMax2Blob(canvas, SIZE_ID_W);
+  console.log("blobOt");
+  const b64Url = await asyncAltImgFile2Base64Url(blobOt);
+  console.log("b64Url", b64Url);
   const resize = doResize4Id(warped);
   cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), resize);
-  // TODO
-  const blob = new Blob([resize.data], { type: EMimeImageType.PNG });
-  console.log("blob", blob);
   src.delete();
   colorg.delete();
   edgesA.delete();
@@ -42,6 +46,7 @@ async function asyncCvImageFile(file: File) {
 <template>
   <div class="column items-center q-gutter-y-md">
     <InputFileImage @action="asyncCvImageFile" />
+    <OutputCanvas :id="hiddenId" style="visibility: hidden" />
     <OutputCanvas :id="outputId" />
   </div>
 </template>

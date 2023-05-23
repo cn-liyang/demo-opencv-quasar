@@ -30,6 +30,15 @@ async function asyncPicaResizeImgFile2Canvas(file: File | Blob) {
   return await picaReducer.toCanvas(file, getPicaOptions(Math.max(toWidth, toHeight)));
 }
 
+async function asyncPicaResizeCanvasMax2Blob(html: HTMLCanvasElement, max: number) {
+  const blob = await picaObj.toBlob(html, EMimeImageType.PNG);
+  return await picaReducer.toBlob(blob, getPicaOptions(max));
+}
+
+async function asyncPicaResizeImgFileMax2Blob(file: File | Blob, max: number) {
+  return await picaReducer.toBlob(file, getPicaOptions(max));
+}
+
 async function asyncPicaResizeImgFileMax2Canvas(file: File | Blob, max: number) {
   return await picaReducer.toCanvas(file, getPicaOptions(max));
 }
@@ -38,5 +47,7 @@ export {
   asyncPicaResizeCanvas2Blob,
   asyncPicaResizeImgFile2Blob,
   asyncPicaResizeImgFile2Canvas,
+  asyncPicaResizeCanvasMax2Blob,
+  asyncPicaResizeImgFileMax2Blob,
   asyncPicaResizeImgFileMax2Canvas,
 };
