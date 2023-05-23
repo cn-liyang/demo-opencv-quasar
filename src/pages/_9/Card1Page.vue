@@ -21,8 +21,8 @@ async function asyncCvIoImageFile(file: File) {
   const linesD = doLines(edgesD);
   /* linesD.forEach((i) => cvObj.line(src, i.startPoint, i.endPoint, new cvObj.Scalar(255, 0, 0, 255)));
   cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), src); */
-  const pspctv = doPerspective(linesD, src);
-  // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), pspctv);
+  const warped = doWarp(linesD, src);
+  // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), warped);
   src.delete();
   colorg.delete();
   edgesA.delete();
@@ -31,8 +31,8 @@ async function asyncCvIoImageFile(file: File) {
   dilate.delete();
   edgesD.delete();
   linesD.delete();
-  pspctv.delete();
-  const blob = new Blob([pspctv.data], { type: EMimeImageType.PNG });
+  warped.delete();
+  const blob = new Blob([warped.data], { type: EMimeImageType.PNG });
   console.log("blob", blob);
 }
 </script>

@@ -255,7 +255,7 @@ function getVertex(lines: Mat) {
   return vertex;
 }
 
-function doPerspective(lines: Mat, src: Mat) {
+function doWarp(lines: Mat, src: Mat) {
   const [tl, tr, br, bl] = getVertex(lines);
   const maxW = Math.max(getDistance(tl, tr), getDistance(bl, br));
   const maxH = Math.max(getDistance(tl, bl), getDistance(tr, br));
@@ -281,5 +281,5 @@ export {
   doPolyDP,
   doLines,
   doLinesP,
-  doPerspective,
+  doWarp,
 };
