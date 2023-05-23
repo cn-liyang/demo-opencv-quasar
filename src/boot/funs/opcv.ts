@@ -266,6 +266,8 @@ function doPerspective(lines: Line[], src: Mat) {
   const M = cvObj.getPerspectiveTransform(srcTri, dstTri);
   const dst = new cvObj.Mat();
   cvObj.warpPerspective(src, dst, M, new cvObj.Size(maxW, maxH), cvObj.INTER_LINEAR, cvObj.BORDER_CONSTANT);
+  srcTri.delete();
+  dstTri.delete();
   M.delete();
   return dst;
 }

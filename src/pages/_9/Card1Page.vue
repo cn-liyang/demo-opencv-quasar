@@ -22,7 +22,8 @@ async function asyncCvIoImageFile(file: File) {
   /* linesD.forEach((i) => cvObj.line(src, i.startPoint, i.endPoint, new cvObj.Scalar(255, 0, 0, 255)));
   cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), src); */
   const pspctv = doPerspective(linesD, src);
-  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), pspctv);
+  // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), pspctv);
+  get;
   /* const mat = polysD.get(0);
   const uint8s = mat.data.filter((_, idx) => idx % 4 === 0);
   console.log("uint8s", uint8s);
