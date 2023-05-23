@@ -85,8 +85,8 @@ function doDilate(polyV: Mat) {
   return dilate;
 }
 
-function doMinAreaRect(polysD: MatVector) {
-  const poly = polysD.get(0);
+function doMinAreaRect(polysV: MatVector) {
+  const poly = polysV.get(0);
   const rotatedRect = cvObj.minAreaRect(poly);
   poly.delete();
   return rotatedRect;

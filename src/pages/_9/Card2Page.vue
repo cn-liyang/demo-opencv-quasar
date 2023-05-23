@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import { Point } from "opencv-ts";
 import { cvObj } from "boot/opcv";
-import { SIZE_ID_W } from "boot/consts/size";
 
 const outputId = "outputId";
 
@@ -9,9 +7,9 @@ async function asyncCvIoImageFile(file: File) {
   const src = cvObj.imread(await asyncResizeImgFile2Canvas(file));
   const colorg = doColor(src);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, colorg);
-  const edges0 = doEdges(colorg);
-  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, edges0);
-  const polys0 = doPolyContour(edges0);
+  const edgesA = doEdges(colorg);
+  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, edgesA);
+  const polys0 = doPolyContour(edgesA);
   // cvObj.drawContours(src, polys0, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
   const filled = doFillPoly(polys0, src.size());
@@ -44,7 +42,7 @@ async function asyncCvIoImageFile(file: File) {
   const M = cvObj.getPerspectiveTransform(srcTri, dstTri);
   const dst = new cvObj.Mat();
   cvObj.warpPerspective(src, dst, M, new cvObj.Size(maxW, maxH), cvObj.INTER_LINEAR, cvObj.BORDER_CONSTANT);
-  cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
+  // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, dst);
   const polyD = doPolyDP(edgesD);
   // cvObj.drawContours(src, polysD, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
   // cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src);
@@ -64,7 +62,8 @@ async function asyncCvIoImageFile(file: File) {
   cvObj.imshow(document.getElementById(outputId) as HTMLCanvasElement, src); */
   src.delete();
   colorg.delete();
-  edges0.delete();
+  edgesA.delete();
+  dst.delete();
 }
 </script>
 
