@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const outputId = "outputId";
 
-async function asyncCvIoImageFile(file: File) {
+async function asyncCvImageFile(file: File) {
   const src = cvObj.imread(await asyncResizeImgFile2Canvas(file));
   const colorg = doColor(src);
   // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), colorg);
@@ -41,7 +41,7 @@ async function asyncCvIoImageFile(file: File) {
 
 <template>
   <div class="column items-center q-gutter-y-md">
-    <InputFileImage @action="asyncCvIoImageFile" />
+    <InputFileImage @action="asyncCvImageFile" />
     <OutputCanvas :id="outputId" />
   </div>
 </template>
