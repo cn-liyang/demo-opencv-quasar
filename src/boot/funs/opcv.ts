@@ -119,16 +119,9 @@ function doPolyDP(edges: Mat) {
 }
 
 function doLines(edges: Mat) {
-  const linea: Line[] = [];
   const lines = new cvObj.Mat();
   cvObj.HoughLines(edges, lines, 1, Math.PI / 180, 40);
-  for (let i = 0; i < lines.rows; ++i) {
-    const rho = lines.data32F[i * 2];
-    const theta = lines.data32F[i * 2 + 1];
-    linea.push(new Line(rho, theta));
-  }
-  lines.delete();
-  return linea;
+  return lines;
 }
 
 function doLinesP(edges: Mat) {
@@ -168,21 +161,23 @@ function getCrossPoint(l1: Line, l2: Line) {
   }
 }
 
-function getCrossPoints(lines: Line[]) {
+function getCrossPoints(lines: Mat) {
+  const linea: Line[] = [];
+  for (let i = 0; i < lines.rows; ++i) {
+    const rho = lines.data32F[i * 2];
+    const theta = lines.data32F[i * 2 + 1];
+    linea.push(new Line(rho, theta));
+  }
   const points: Point[] = [];
-  for (let i = 0; i < lines.length; i++) {
-    for (let j = i + 1; j < lines.length; j++) {
-      const point = getCrossPoint(lines[i], lines[j]);
+  for (let i = 0; i < linea.length; i++) {
+    for (let j = i + 1; j < linea.length; j++) {
+      const point = getCrossPoint(linea[i], linea[j]);
       if (point) {
         points.push(point);
       }
     }
   }
   return points;
-}
-
-function getHypotenuse(p: Point) {
-  return Math.sqrt(Math.pow(p.x, 2) + Math.pow(p.y, 2));
 }
 
 function getDistance(p1: Point, p2: Point) {
@@ -225,40 +220,43 @@ function getPoint4(points: Point[]) {
     });
 }
 
-function getVertex(lines: Line[]) {
+function getVertex(lines: Mat) {
   const points = getCrossPoints(lines);
   const point4 = getPoint4(points);
   point4.sort((a, b) => a.x - b.x);
+  const tmppit: Point[] = [];
   if (point4[0].x === point4[1].x && point4[0].y > point4[1].y) {
-    const tmp0 = <Point>point4.shift();
-    const tmp1 = <Point>point4.shift();
-    point4.unshift(tmp0);
-    point4.unshift(tmp1);
-  }
-  const points0: { distance: number; point: Point }[] = [];
-  points0.push({ distance: 0, point: point4[0] });
-  points0.push({ distance: getDistance(point4[0], point4[1]), point: point4[1] });
-  points0.push({ distance: getDistance(point4[0], point4[2]), point: point4[2] });
-  points0.push({ distance: getDistance(point4[0], point4[3]), point: point4[3] });
-  const points1 = points0.sort((a, b) => a.distance - b.distance).map((i) => i.point);
-  const vertex: Point[] = [];
-  if (points1[0].y > points1[1].y) {
-    vertex.push(points1[2]);
-    vertex.push(points1[0]);
-    vertex.push(points1[1]);
-    vertex.push(points1[3]);
+    tmppit.push(point4[1]);
+    tmppit.push(point4[0]);
   } else {
-    vertex.push(points1[0]);
-    vertex.push(points1[2]);
-    vertex.push(points1[3]);
-    vertex.push(points1[1]);
+    tmppit.push(point4[0]);
+    tmppit.push(point4[1]);
+  }
+  tmppit.push(point4[2]);
+  tmppit.push(point4[3]);
+  const dstpit: { distance: number; point: Point }[] = [];
+  dstpit.push({ distance: 0, point: tmppit[0] });
+  dstpit.push({ distance: getDistance(tmppit[0], tmppit[1]), point: tmppit[1] });
+  dstpit.push({ distance: getDistance(tmppit[0], tmppit[2]), point: tmppit[2] });
+  dstpit.push({ distance: getDistance(tmppit[0], tmppit[3]), point: tmppit[3] });
+  const mappit = dstpit.sort((a, b) => a.distance - b.distance).map((i) => i.point);
+  const vertex: Point[] = [];
+  if (mappit[0].y > mappit[1].y) {
+    vertex.push(mappit[2]);
+    vertex.push(mappit[0]);
+    vertex.push(mappit[1]);
+    vertex.push(mappit[3]);
+  } else {
+    vertex.push(mappit[0]);
+    vertex.push(mappit[2]);
+    vertex.push(mappit[3]);
+    vertex.push(mappit[1]);
   }
   return vertex;
 }
 
-function doPerspective(lines: Line[], src: Mat) {
+function doPerspective(lines: Mat, src: Mat) {
   const [tl, tr, br, bl] = getVertex(lines);
-  console.log("tl, bl, tr, br", tl, bl, tr, br);
   const maxW = Math.max(getDistance(tl, tr), getDistance(bl, br));
   const maxH = Math.max(getDistance(tl, bl), getDistance(tr, br));
   const srcTri = cvObj.matFromArray(4, 1, cvObj.CV_32FC2, [tl.x, tl.y, tr.x, tr.y, br.x, br.y, bl.x, bl.y]);

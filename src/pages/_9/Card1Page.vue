@@ -9,10 +9,10 @@ async function asyncCvIoImageFile(file: File) {
   // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), colorg);
   const edgesA = doEdges(colorg);
   // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), edgesA);
-  const polys0 = doPolyContour(edgesA);
-  /* cvObj.drawContours(src, polys0, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
+  const contr0 = doPolyContour(edgesA);
+  /* cvObj.drawContours(src, contr0, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
   cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), src); */
-  const filled = doFillPoly(polys0, src.size());
+  const filled = doFillPoly(contr0, src.size());
   // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), filled);
   const dilate = doDilate(filled);
   // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), dlteP);
@@ -23,27 +23,17 @@ async function asyncCvIoImageFile(file: File) {
   cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), src); */
   const pspctv = doPerspective(linesD, src);
   // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), pspctv);
-  const canvas = <HTMLCanvasElement>document.createElement("HTMLCanvasElement");
-  cvObj.imshow(canvas, pspctv);
-  const base64URL = canvas.toDataURL();
-  console.log("base64URL", base64URL);
-  /* const mat = polysD.get(0);
-  const uint8s = mat.data.filter((_, idx) => idx % 4 === 0);
-  console.log("uint8s", uint8s);
-  const point1 = new cvObj.Point(uint8s[0], uint8s[1]);
-  const y2 = Math.abs(uint8s[1] - uint8s[3]);
-  const point2 = new cvObj.Point(uint8s[2], uint8s[3]);
-  const point3 = new cvObj.Point(uint8s[4], uint8s[5]);
-  const point4 = new cvObj.Point(uint8s[6], uint8s[7]);
-  cvObj.circle(src, point1, 1, new cvObj.Scalar(255, 0, 0, 255));
-  cvObj.circle(src, point2, 2, new cvObj.Scalar(255, 0, 0, 255));
-  cvObj.circle(src, point3, 3, new cvObj.Scalar(255, 0, 0, 255));
-  cvObj.circle(src, point4, 4, new cvObj.Scalar(255, 0, 0, 255));
-  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), src); */
   src.delete();
   colorg.delete();
   edgesA.delete();
+  contr0.delete();
+  filled.delete();
+  dilate.delete();
   edgesD.delete();
+  linesD.delete();
+  pspctv.delete();
+  const blob = new Blob([pspctv.data], { type: EMimeImageType.PNG });
+  console.log("blob", blob);
 }
 </script>
 
