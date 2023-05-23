@@ -225,7 +225,9 @@ function getVertex(lines: Mat) {
   const point4 = getPoint4(points);
   point4.sort((a, b) => a.x - b.x);
   const tmppit: Point[] = [];
-  if (point4[0].x === point4[1].x && point4[0].y > point4[1].y) {
+  const dist01 = Math.abs(point4[0].x - point4[1].x);
+  const dist02 = Math.abs(point4[0].x - point4[2].x);
+  if (dist01 < dist02 / 2 && point4[0].y > point4[1].y) {
     tmppit.push(point4[1]);
     tmppit.push(point4[0]);
   } else {
