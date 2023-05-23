@@ -43,4 +43,20 @@ function asyncGetImgFileRect(src: string): Promise<{ width: number; height: numb
   });
 }
 
-export { resizeRectInch6, resizeRectId, resizeRect500, asyncAltImgFile2Base64Url, asyncGetImgFileRect };
+function asyncGetHtmlImageElement(src: string): Promise<HTMLImageElement> {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.src = src;
+    image.onload = () => resolve(image);
+    image.onerror = (e) => reject(e);
+  });
+}
+
+export {
+  resizeRectInch6,
+  resizeRectId,
+  resizeRect500,
+  asyncAltImgFile2Base64Url,
+  asyncGetImgFileRect,
+  asyncGetHtmlImageElement,
+};

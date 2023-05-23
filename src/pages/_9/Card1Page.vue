@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { cvObj } from "boot/opcv";
-
 const outputId = "outputId";
 
 async function asyncCvIoImageFile(file: File) {
@@ -23,6 +21,11 @@ async function asyncCvIoImageFile(file: File) {
   cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), src); */
   const warped = doWarp(linesD, src);
   // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), warped);
+  const resize = doResize4Id(warped);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), resize);
+  // TODO
+  const blob = new Blob([resize.data], { type: EMimeImageType.PNG });
+  console.log("blob", blob);
   src.delete();
   colorg.delete();
   edgesA.delete();
@@ -32,8 +35,7 @@ async function asyncCvIoImageFile(file: File) {
   edgesD.delete();
   linesD.delete();
   warped.delete();
-  const blob = new Blob([warped.data], { type: EMimeImageType.PNG });
-  console.log("blob", blob);
+  resize.delete();
 }
 </script>
 

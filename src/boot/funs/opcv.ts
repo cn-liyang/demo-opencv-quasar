@@ -2,7 +2,6 @@ import { Mat, MatVector, Point, Size } from "opencv-ts";
 import { Line, LinePoint } from "src/types/opcv";
 
 let imgFileArea = 0;
-let imgCardCenterPoint = new cvObj.Point(-1, -1);
 
 async function asyncResizeImgFile2Canvas(file: File | Blob) {
   const base64Url = await asyncAltImgFile2Base64Url(file);
@@ -53,10 +52,6 @@ function doPolyContour(edges: Mat) {
     cvObj.approxPolyDP(cnt, tmp, arcLength * 0.01, true);
     if (tmp.total() === 4) {
       polys.push_back(cnt);
-      const circle = cvObj.minEnclosingCircle(cnt);
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      imgCardCenterPoint = circle.center;
       cnt.delete();
       tmp.delete();
       break;
@@ -161,17 +156,11 @@ function getCrossPoint(l1: Line, l2: Line) {
   }
 }
 
-function getCrossPoints(lines: Mat) {
-  const linea: Line[] = [];
-  for (let i = 0; i < lines.rows; ++i) {
-    const rho = lines.data32F[i * 2];
-    const theta = lines.data32F[i * 2 + 1];
-    linea.push(new Line(rho, theta));
-  }
+function getCrossPoints(lines: Line[]) {
   const points: Point[] = [];
-  for (let i = 0; i < linea.length; i++) {
-    for (let j = i + 1; j < linea.length; j++) {
-      const point = getCrossPoint(linea[i], linea[j]);
+  for (let i = 0; i < lines.length; i++) {
+    for (let j = i + 1; j < lines.length; j++) {
+      const point = getCrossPoint(lines[i], lines[j]);
       if (point) {
         points.push(point);
       }
@@ -220,8 +209,19 @@ function getPoint4(points: Point[]) {
     });
 }
 
+function altDataType2Line(lines: Mat) {
+  const linea: Line[] = [];
+  for (let i = 0; i < lines.rows; ++i) {
+    const rho = lines.data32F[i * 2];
+    const theta = lines.data32F[i * 2 + 1];
+    linea.push(new Line(rho, theta));
+  }
+  return linea;
+}
+
 function getVertex(lines: Mat) {
-  const points = getCrossPoints(lines);
+  const lines2 = altDataType2Line(lines);
+  const points = getCrossPoints(lines2);
   const point4 = getPoint4(points);
   point4.sort((a, b) => a.x - b.x);
   const tmppit: Point[] = [];
@@ -270,6 +270,12 @@ function doWarp(lines: Mat, src: Mat) {
   return dst;
 }
 
+function doResize4Id(src: Mat) {
+  const dst = new cvObj.Mat();
+  cvObj.resize(src, dst, new cvObj.Size(SIZE_ID_W, SIZE_ID_H), 0, 0, cvObj.INTER_AREA);
+  return dst;
+}
+
 export {
   asyncResizeImgFile2Canvas,
   doColor,
@@ -282,4 +288,5 @@ export {
   doLines,
   doLinesP,
   doWarp,
+  doResize4Id,
 };
