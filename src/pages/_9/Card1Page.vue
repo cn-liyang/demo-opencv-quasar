@@ -23,7 +23,10 @@ async function asyncCvIoImageFile(file: File) {
   cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), src); */
   const pspctv = doPerspective(linesD, src);
   // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), pspctv);
-  get;
+  const canvas = <HTMLCanvasElement>document.createElement("HTMLCanvasElement");
+  cvObj.imshow(canvas, pspctv);
+  const base64URL = canvas.toDataURL();
+  console.log("base64URL", base64URL);
   /* const mat = polysD.get(0);
   const uint8s = mat.data.filter((_, idx) => idx % 4 === 0);
   console.log("uint8s", uint8s);
