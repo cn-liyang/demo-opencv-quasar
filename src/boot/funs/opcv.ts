@@ -219,7 +219,7 @@ function altDataType2Line(lines: Mat) {
   return linea;
 }
 
-function getVertex(lines: Mat) {
+function doVertex(lines: Mat) {
   const lines2 = altDataType2Line(lines);
   const points = getCrossPoints(lines2);
   const point4 = getPoint4(points);
@@ -257,8 +257,8 @@ function getVertex(lines: Mat) {
   return vertex;
 }
 
-function doWarp(lines: Mat, src: Mat) {
-  const [tl, tr, br, bl] = getVertex(lines);
+function doWarp(vertex: Point[], src: Mat) {
+  const [tl, tr, br, bl] = vertex;
   const maxW = Math.max(getDistance(tl, tr), getDistance(bl, br));
   const maxH = Math.max(getDistance(tl, bl), getDistance(tr, br));
   const srcTri = cvObj.matFromArray(4, 1, cvObj.CV_32FC2, [tl.x, tl.y, tr.x, tr.y, br.x, br.y, bl.x, bl.y]);
@@ -289,6 +289,7 @@ export {
   doPolyDP,
   doLines,
   doLinesP,
+  doVertex,
   doWarp,
   doResize4Id,
 };
