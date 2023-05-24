@@ -77,7 +77,7 @@ function doDilate(polyV: Mat) {
     dilate,
     M,
     new cvObj.Point(-1, -1),
-    4,
+    3,
     cvObj.BORDER_CONSTANT,
     cvObj.morphologyDefaultBorderValue()
   );

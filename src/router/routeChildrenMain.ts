@@ -497,7 +497,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
     meta: {
       title: "证卡截图矩形包",
       caption: "OpenCV.js Tutorials",
-      icon: "mdi-credit-card-multiple-outline",
+      icon: "mdi-credit-card-scan-outline",
       link: "https://docs.opencv.org/4.5.0/d5/d10/tutorial_js_root.html",
     },
   },
@@ -507,7 +507,7 @@ const routeChildrenMain: RouteRecordRaw[] = [
     meta: {
       title: "证卡截图霍夫线",
       caption: "OpenCV.js Tutorials",
-      icon: "mdi-credit-card-scan-outline",
+      icon: "mdi-credit-card-multiple-outline",
       link: "https://docs.opencv.org/4.5.0/d5/d10/tutorial_js_root.html",
     },
   },
