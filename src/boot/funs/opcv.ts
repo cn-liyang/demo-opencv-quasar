@@ -6,7 +6,7 @@ let imgFileArea = 0;
 async function asyncResizeImgFile2Canvas(file: File | Blob) {
   const base64Url = await asyncAltImgFile2Base64Url(file);
   const { width, height } = await asyncGetImgFileRect(base64Url);
-  const { toWidth, toHeight } = resizeRect500(width, height);
+  const { toWidth, toHeight } = resizeRectMax(width, height, SIZE_INCH6_H);
   imgFileArea = toWidth * toHeight;
   return await asyncPicaResizeImgFileMax2Canvas(file, Math.max(toWidth, toHeight));
 }

@@ -11,3 +11,4 @@ export const SIZE_ID_H = 250;
 export const SIZE_ID_R = SIZE_ID_W / SIZE_ID_H; // 1.58
 //
 export const LENGTH_500 = 500;
+export const LENGTH_1000 = 1000;

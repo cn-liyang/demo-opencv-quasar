@@ -16,8 +16,8 @@ function resizeRectId(fromWidth: number, fromHeight: number) {
   }
 }
 
-function resizeRect500(fromWidth: number, fromHeight: number) {
-  const lengthRatio = Math.max(fromWidth, fromHeight) / LENGTH_500;
+function resizeRectMax(fromWidth: number, fromHeight: number, maxLength: number) {
+  const lengthRatio = Math.max(fromWidth, fromHeight) / maxLength;
   if (lengthRatio > 1) {
     return { toWidth: fromWidth / lengthRatio, toHeight: fromHeight / lengthRatio };
   } else {
@@ -25,4 +25,4 @@ function resizeRect500(fromWidth: number, fromHeight: number) {
   }
 }
 
-export { resizeRectInch6, resizeRectId, resizeRect500 };
+export { resizeRectInch6, resizeRectId, resizeRectMax };

@@ -1,35 +1,46 @@
 <script lang="ts" setup>
-const outputId = "outputId";
 const hiddenId = "hiddenId";
 
 async function asyncCvImageFile(file: File) {
   const src = cvObj.imread(await asyncResizeImgFile2Canvas(file));
   const colorg = doColor(src);
-  // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), colorg);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById("outputId1"), colorg);
   const edgesA = doEdges(colorg);
-  // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), edgesA);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById("outputId2"), edgesA);
   const contr0 = doPolyContour(edgesA);
-  /* cvObj.drawContours(src, contr0, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
-  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), src); */
+  const clone0 = src.clone();
+  cvObj.drawContours(clone0, contr0, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById("outputId3"), clone0);
   const filled = doFillPoly(contr0, src.size());
-  // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), filled);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById("outputId4"), filled);
   const dilate = doDilate(filled);
-  // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), dlteP);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById("outputId5"), dilate);
   const edgesD = doEdges(dilate);
-  // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), edgesD);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById("outputId6"), edgesD);
   const linesD = doLines(edgesD);
-  /* linesD.forEach((i) => cvObj.line(src, i.startPoint, i.endPoint, new cvObj.Scalar(255, 0, 0, 255)));
-  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), src); */
+  const cloneD = src.clone();
+  for (let i = 0; i < linesD.rows; ++i) {
+    const rho = linesD.data32F[i * 2];
+    const theta = linesD.data32F[i * 2 + 1];
+    const a = Math.cos(theta);
+    const b = Math.sin(theta);
+    const x0 = a * rho;
+    const y0 = b * rho;
+    const startPoint = { x: x0 - 1000 * b, y: y0 + 1000 * a };
+    const endPoint = { x: x0 + 1000 * b, y: y0 - 1000 * a };
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    cvObj.line(cloneD, startPoint, endPoint, new cvObj.Scalar(255, 0, 0, 255));
+  }
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById("outputId7"), cloneD);
   const warped = doWarp(linesD, src);
-  // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), warped);
-  const canvas = <HTMLCanvasElement>document.getElementById(hiddenId);
-  cvObj.imshow(canvas, warped);
-  const blobOt = await asyncPicaResizeCanvasMax2Blob(canvas, SIZE_ID_W);
-  console.log("blobOt");
-  const b64Url = await asyncAltImgFile2Base64Url(blobOt);
-  console.log("b64Url", b64Url);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById("outputId8"), warped);
+  // const blobOt = await asyncPicaResizeCanvasMax2Blob(canvas, SIZE_ID_W);
+  // console.log("blobOt");
+  // const b64Url = await asyncAltImgFile2Base64Url(blobOt);
+  // console.log("b64Url", b64Url);
   const resize = doResize4Id(warped);
-  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), resize);
+  cvObj.imshow(<HTMLCanvasElement>document.getElementById("outputId9"), resize);
   src.delete();
   colorg.delete();
   edgesA.delete();
@@ -46,7 +57,6 @@ async function asyncCvImageFile(file: File) {
 <template>
   <div class="column items-center q-gutter-y-md">
     <InputFileImage @action="asyncCvImageFile" />
-    <OutputCanvas :id="hiddenId" style="visibility: hidden" />
-    <OutputCanvas :id="outputId" />
+    <OutputCanvas v-for="i in 9" :id="`outputId${i}`" :key="i" />
   </div>
 </template>

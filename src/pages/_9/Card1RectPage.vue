@@ -9,8 +9,8 @@ async function asyncCvImageFile(file: File) {
   const edgesA = doEdges(colorg);
   // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), edgesA);
   const contr0 = doPolyContour(edgesA);
-  /* cvObj.drawContours(src, contr0, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
-  cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), src); */
+  // cvObj.drawContours(src, contr0, 0, new cvObj.Scalar(255, 0, 0, 255), 1, cvObj.LINE_8);
+  // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), src);
   const filled = doFillPoly(contr0, src.size());
   // cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), filled);
   const dilate = doDilate(filled);
