@@ -6,15 +6,15 @@ export class Line {
   startPoint: Point;
   endPoint: Point;
 
-  constructor(rho: number, theta: number) {
+  constructor(rho: number, theta: number, quantity: number) {
     this.rho = rho;
     this.theta = theta;
-    const a = Math.cos(theta);
-    const b = Math.sin(theta);
-    const x0 = a * rho;
-    const y0 = b * rho;
-    this.startPoint = new cvObj.Point(x0 - LENGTH_500 * b, y0 + LENGTH_500 * a);
-    this.endPoint = new cvObj.Point(x0 + LENGTH_500 * b, y0 - LENGTH_500 * a);
+    const cos = Math.cos(theta);
+    const sin = Math.sin(theta);
+    const rx0 = cos * rho;
+    const ry0 = sin * rho;
+    this.startPoint = new cvObj.Point(rx0 - quantity * sin, ry0 + quantity * cos);
+    this.endPoint = new cvObj.Point(rx0 + quantity * sin, ry0 - quantity * cos);
   }
 }
 

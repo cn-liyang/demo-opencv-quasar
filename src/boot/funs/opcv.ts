@@ -135,7 +135,8 @@ function doLinesP(edges: Mat) {
 }
 
 function getCrossPoint(l1: Line, l2: Line) {
-  if (Math.abs(l1.theta - l2.theta) < Math.PI / 8) {
+  const theta = Math.abs(l1.theta - l2.theta);
+  if (theta < Math.PI / 6) {
     return;
   }
   // y = a * x + b
@@ -214,14 +215,14 @@ function altDataType2Line(lines: Mat) {
   for (let i = 0; i < lines.rows; ++i) {
     const rho = lines.data32F[i * 2];
     const theta = lines.data32F[i * 2 + 1];
-    linea.push(new Line(rho, theta));
+    linea.push(new Line(rho, theta, imgFileArea / 10));
   }
   return linea;
 }
 
 function doVertex(lines: Mat) {
-  const lines2 = altDataType2Line(lines);
-  const points = getCrossPoints(lines2);
+  const lines0 = altDataType2Line(lines);
+  const points = getCrossPoints(lines0);
   const point4 = getPoint4(points);
   point4.sort((a, b) => a.x - b.x);
   const tmppit: Point[] = [];

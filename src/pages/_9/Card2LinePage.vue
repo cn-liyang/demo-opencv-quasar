@@ -47,6 +47,7 @@ async function asyncCvImageFile(file: File) {
   cvObj.circle(cloneV, vertex[1], 1, new cvObj.Scalar(0, 255, 0, 255), 2);
   cvObj.circle(cloneV, vertex[2], 1, new cvObj.Scalar(0, 0, 255, 255), 2);
   cvObj.circle(cloneV, vertex[3], 1, new cvObj.Scalar(0, 0, 0, 255), 2);
+  console.log("vertex[3]", vertex[3]);
   cvObj.imshow(<HTMLCanvasElement>document.getElementById("outputId8"), cloneV);
   cloneV.delete();
 
