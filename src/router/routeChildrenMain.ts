@@ -493,21 +493,21 @@ const routeChildrenMain: RouteRecordRaw[] = [
   },
   {
     path: "91",
-    component: () => import("pages/_9/Card1Page.vue"),
+    component: () => import("pages/_9/Card1RectPage.vue"),
     meta: {
-      title: "证卡截图1",
+      title: "证卡截图包矩形",
       caption: "OpenCV.js Tutorials",
-      icon: "mdi-card-account-details-outline",
+      icon: "mdi-credit-card-multiple-outline",
       link: "https://docs.opencv.org/4.5.0/d5/d10/tutorial_js_root.html",
     },
   },
   {
     path: "92",
-    component: () => import("pages/_9/Card2Page.vue"),
+    component: () => import("pages/_9/Card2LinePage.vue"),
     meta: {
-      title: "证卡截图2",
+      title: "证卡截图霍夫线",
       caption: "OpenCV.js Tutorials",
-      icon: "mdi-card-account-details-outline",
+      icon: "mdi-credit-card-scan-outline",
       link: "https://docs.opencv.org/4.5.0/d5/d10/tutorial_js_root.html",
     },
   },
