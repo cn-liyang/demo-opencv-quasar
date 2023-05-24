@@ -3,7 +3,7 @@ const route = useRoute();
 </script>
 
 <template>
-  <q-footer class="bg-secondary text-white" elevated reveal>
+  <q-footer class="bg-secondary text-white" elevated>
     <q-toolbar>
       <q-btn
         v-if="route.meta?.link"

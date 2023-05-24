@@ -5,7 +5,7 @@ defineEmits<{
 </script>
 
 <template>
-  <q-header class="bg-primary text-white" elevated reveal>
+  <q-header class="bg-primary text-white" elevated>
     <q-toolbar>
       <q-btn aria-label="Menu" dense flat icon="menu" round @click.prevent="$emit('action')" />
       <q-toolbar-title>Demo OpenCV.js in Quasar</q-toolbar-title>
