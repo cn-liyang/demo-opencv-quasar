@@ -1,6 +1,6 @@
 import { EMimeImageType } from "boot/enums/mime";
 
-function getPicaOptions(max = 1024) {
+function _getOptions(max = 1024) {
   return {
     max,
     unsharpAmount: 160,
@@ -13,41 +13,41 @@ async function asyncPicaResizeCanvas2Blob(html: HTMLCanvasElement) {
   const blob = await picaObj.toBlob(html, EMimeImageType.PNG);
   const { width, height } = html;
   const { toWidth, toHeight } = resizeRectInch6(width, height);
-  return await picaReducer.toBlob(blob, getPicaOptions(Math.max(toWidth, toHeight)));
+  return await picaReducer.toBlob(blob, _getOptions(Math.max(toWidth, toHeight)));
 }
 
-async function asyncPicaResizeImgFile2Blob(file: File | Blob) {
-  const base64Url = await asyncAltImgFile2Base64Url(file);
-  const { width, height } = await asyncGetImgFileRect(base64Url);
+async function asyncPicaResizeImageFile2Blob(file: File | Blob) {
+  const base64Url = await asyncAltImageFile2Base64Url(file);
+  const { width, height } = await asyncGetImageFileRect(base64Url);
   const { toWidth, toHeight } = resizeRectInch6(width, height);
-  return await picaReducer.toBlob(file, getPicaOptions(Math.max(toWidth, toHeight)));
+  return await picaReducer.toBlob(file, _getOptions(Math.max(toWidth, toHeight)));
 }
 
-async function asyncPicaResizeImgFile2Canvas(file: File | Blob) {
-  const base64Url = await asyncAltImgFile2Base64Url(file);
-  const { width, height } = await asyncGetImgFileRect(base64Url);
+async function asyncPicaResizeImageFile2Canvas(file: File | Blob) {
+  const base64Url = await asyncAltImageFile2Base64Url(file);
+  const { width, height } = await asyncGetImageFileRect(base64Url);
   const { toWidth, toHeight } = resizeRectInch6(width, height);
-  return await picaReducer.toCanvas(file, getPicaOptions(Math.max(toWidth, toHeight)));
+  return await picaReducer.toCanvas(file, _getOptions(Math.max(toWidth, toHeight)));
 }
 
 async function asyncPicaResizeCanvasMax2Blob(html: HTMLCanvasElement, max: number) {
   const blob = await picaObj.toBlob(html, EMimeImageType.PNG);
-  return await picaReducer.toBlob(blob, getPicaOptions(max));
+  return await picaReducer.toBlob(blob, _getOptions(max));
 }
 
-async function asyncPicaResizeImgFileMax2Blob(file: File | Blob, max: number) {
-  return await picaReducer.toBlob(file, getPicaOptions(max));
+async function asyncPicaResizeImageFileMax2Blob(file: File | Blob, max: number) {
+  return await picaReducer.toBlob(file, _getOptions(max));
 }
 
-async function asyncPicaResizeImgFileMax2Canvas(file: File | Blob, max: number) {
-  return await picaReducer.toCanvas(file, getPicaOptions(max));
+async function asyncPicaResizeImageFileMax2Canvas(file: File | Blob, max: number) {
+  return await picaReducer.toCanvas(file, _getOptions(max));
 }
 
 export {
   asyncPicaResizeCanvas2Blob,
-  asyncPicaResizeImgFile2Blob,
-  asyncPicaResizeImgFile2Canvas,
+  asyncPicaResizeImageFile2Blob,
+  asyncPicaResizeImageFile2Canvas,
   asyncPicaResizeCanvasMax2Blob,
-  asyncPicaResizeImgFileMax2Blob,
-  asyncPicaResizeImgFileMax2Canvas,
+  asyncPicaResizeImageFileMax2Blob,
+  asyncPicaResizeImageFileMax2Canvas,
 };

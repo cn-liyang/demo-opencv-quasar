@@ -45,7 +45,7 @@ async function asyncCvImageFile(file: File) {
   cvObj.imshow(<HTMLCanvasElement>document.getElementById("outputId8"), warped);
   // const blobOt = await asyncPicaResizeCanvasMax2Blob(canvas, SIZE_ID_W);
   // console.log("blobOt");
-  // const b64Url = await asyncAltImgFile2Base64Url(blobOt);
+  // const b64Url = await asyncAltImageFile2Base64Url(blobOt);
   // console.log("b64Url", b64Url);
   const resize = doResize4Id(warped);
   cvObj.imshow(<HTMLCanvasElement>document.getElementById("outputId9"), resize);

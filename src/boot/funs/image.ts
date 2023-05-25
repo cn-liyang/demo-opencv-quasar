@@ -1,4 +1,8 @@
-function asyncAltImgFile2Base64Url(file: File | Blob): Promise<string> {
+function getAssetsImage(name: string) {
+  return `src/assets/${name}`;
+}
+
+function asyncAltImageFile2Base64Url(file: File | Blob): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -7,7 +11,7 @@ function asyncAltImgFile2Base64Url(file: File | Blob): Promise<string> {
   });
 }
 
-function asyncGetImgFileRect(src: string): Promise<{ width: number; height: number }> {
+function asyncGetImageFileRect(src: string): Promise<{ width: number; height: number }> {
   return new Promise((resolve, reject) => {
     const image = new Image();
     image.src = src;
@@ -25,4 +29,4 @@ function asyncGetHtmlImageElement(src: string): Promise<HTMLImageElement> {
   });
 }
 
-export { asyncAltImgFile2Base64Url, asyncGetImgFileRect, asyncGetHtmlImageElement };
+export { getAssetsImage, asyncAltImageFile2Base64Url, asyncGetImageFileRect, asyncGetHtmlImageElement };

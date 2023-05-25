@@ -3,7 +3,7 @@ const outputId = "outputId";
 
 async function asyncCvIoImageFile(file: File) {
   // The native imread and imshow have the channels stored in BGR order.
-  const mat = cvObj.imread(await asyncPicaResizeImgFile2Canvas(file));
+  const mat = cvObj.imread(await asyncPicaResizeImageFile2Canvas(file));
   cvObj.imshow(<HTMLCanvasElement>document.getElementById(outputId), mat);
   mat.delete();
 }

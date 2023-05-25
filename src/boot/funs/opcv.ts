@@ -4,11 +4,11 @@ import { Line, LinePoint } from "src/types/opcv";
 let imgFileArea = 0;
 
 async function asyncResizeImgFile2Canvas(file: File | Blob) {
-  const base64Url = await asyncAltImgFile2Base64Url(file);
-  const { width, height } = await asyncGetImgFileRect(base64Url);
+  const base64Url = await asyncAltImageFile2Base64Url(file);
+  const { width, height } = await asyncGetImageFileRect(base64Url);
   const { toWidth, toHeight } = resizeRectMax(width, height, SIZE_INCH6_H);
   imgFileArea = toWidth * toHeight;
-  return await asyncPicaResizeImgFileMax2Canvas(file, Math.max(toWidth, toHeight));
+  return await asyncPicaResizeImageFileMax2Canvas(file, Math.max(toWidth, toHeight));
 }
 
 function doColor(src: Mat) {
