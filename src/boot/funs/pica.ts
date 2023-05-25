@@ -30,16 +30,16 @@ async function asyncPicaResizeImageFile2Canvas(file: File | Blob) {
   return await picaReducer.toCanvas(file, _getOptions(Math.max(toWidth, toHeight)));
 }
 
-async function asyncPicaResizeCanvasMax2Blob(html: HTMLCanvasElement, max: number) {
+async function asyncPicaResizeCanvasMax2Blob(html: HTMLCanvasElement, max?: number) {
   const blob = await picaObj.toBlob(html, EMimeImageType.PNG);
   return await picaReducer.toBlob(blob, _getOptions(max));
 }
 
-async function asyncPicaResizeImageFileMax2Blob(file: File | Blob, max: number) {
+async function asyncPicaResizeImageFileMax2Blob(file: File | Blob, max?: number) {
   return await picaReducer.toBlob(file, _getOptions(max));
 }
 
-async function asyncPicaResizeImageFileMax2Canvas(file: File | Blob, max: number) {
+async function asyncPicaResizeImageFileMax2Canvas(file: File | Blob, max?: number) {
   return await picaReducer.toCanvas(file, _getOptions(max));
 }
 
