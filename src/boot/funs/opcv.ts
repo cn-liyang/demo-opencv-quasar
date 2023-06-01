@@ -14,7 +14,7 @@ async function asyncImageFile2Img(file: File | Blob) {
 async function asyncResizeImgFile2Canvas(file: File | Blob) {
   const dataUrl = await asyncAltImageFile2DataUrl(file);
   const { width, height } = await asyncGetImageFileRect(dataUrl);
-  const { width: toWidth, height: toHeight } = resizeRectMax({ width, height }, RECT_PIXEL_1024);
+  const { width: toWidth, height: toHeight } = resizeRectMax({ width, height }, RECT_PIXEL_2048);
   imgFileArea = toWidth * toHeight;
   return await asyncPicaResizeImageFileMax2Canvas(file, Math.max(toWidth, toHeight));
 }
@@ -22,7 +22,7 @@ async function asyncResizeImgFile2Canvas(file: File | Blob) {
 function doColor(src: Mat) {
   const gray = new cvObj.Mat();
   cvObj.cvtColor(src, gray, cvObj.COLOR_RGBA2GRAY);
-  cvObj.GaussianBlur(gray, gray, new cvObj.Size(3, 3), 0, 0, cvObj.BORDER_DEFAULT);
+  cvObj.GaussianBlur(gray, gray, new cvObj.Size(5, 5), 0, 0, cvObj.BORDER_DEFAULT);
   return gray;
 }
 

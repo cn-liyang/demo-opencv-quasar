@@ -1,6 +1,7 @@
 // Pixel
 export const RECT_PIXEL_512 = 512;
 export const RECT_PIXEL_1024 = 1024;
+export const RECT_PIXEL_2048 = 2048;
 // 2:3
 export const RECT_RATIO_2VS3 = 2 / 3;
 // 3:4

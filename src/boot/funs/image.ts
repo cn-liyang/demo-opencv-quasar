@@ -9,7 +9,7 @@ function resizeRectMax(rect: IRect, max: number) {
   if (ratio > 1) {
     return { width: ~~(rect.width / ratio), height: ~~(rect.height / ratio) };
   } else {
-    return { width: ~~(rect.width * ratio), height: ~~(rect.height * ratio) };
+    return { width: rect.width, height: rect.height };
   }
 }
 

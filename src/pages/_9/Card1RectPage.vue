@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 async function asyncCvImageFile(file: File) {
-  const src = cvObj.imread(await asyncImageFile2Img(file));
+  const src = cvObj.imread(await asyncResizeImgFile2Canvas(file));
 
   const colorg = doColor(src);
   cvObj.imshow(<HTMLCanvasElement>document.getElementById("outputId1"), colorg);
