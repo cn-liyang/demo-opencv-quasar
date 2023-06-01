@@ -1,12 +1,20 @@
 import { Mat, MatVector, Point, Size } from "opencv-ts";
-import { Line, LinePoint } from "src/types/opcv";
+import { Line, LinePoint } from "src/types/interfaces/opcv";
 
 let imgFileArea = 0;
 
+async function asyncImageFile2Img(file: File | Blob) {
+  const dataUrl = await asyncAltImageFile2DataUrl(file);
+  const htmlImageElement = await asyncGetHtmlImageElement(dataUrl);
+  const { width, height } = htmlImageElement;
+  imgFileArea = width * height;
+  return htmlImageElement;
+}
+
 async function asyncResizeImgFile2Canvas(file: File | Blob) {
-  const base64Url = await asyncAltImageFile2Base64Url(file);
-  const { width, height } = await asyncGetImageFileRect(base64Url);
-  const { toWidth, toHeight } = resizeRectMax(width, height, SIZE_INCH6_H);
+  const dataUrl = await asyncAltImageFile2DataUrl(file);
+  const { width, height } = await asyncGetImageFileRect(dataUrl);
+  const { width: toWidth, height: toHeight } = resizeRectMax({ width, height }, RECT_PIXEL_1024);
   imgFileArea = toWidth * toHeight;
   return await asyncPicaResizeImageFileMax2Canvas(file, Math.max(toWidth, toHeight));
 }
@@ -280,6 +288,7 @@ function doResize4Id(src: Mat) {
 }
 
 export {
+  asyncImageFile2Img,
   asyncResizeImgFile2Canvas,
   doColor,
   doEdges,

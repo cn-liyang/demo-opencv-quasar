@@ -1,13 +1,33 @@
+import { IRect } from "src/types/interfaces/size";
+
 function getAssetsImage(name: string) {
   return `src/assets/${name}`;
 }
 
-function asyncAltImageFile2Base64Url(file: File | Blob): Promise<string> {
+function resizeRectMax(rect: IRect, max: number) {
+  const ratio = Math.max(rect.width, rect.height) / max;
+  if (ratio > 1) {
+    return { width: ~~(rect.width / ratio), height: ~~(rect.height / ratio) };
+  } else {
+    return { width: ~~(rect.width * ratio), height: ~~(rect.height * ratio) };
+  }
+}
+
+function resizeRectMaxRatio(rect: IRect, max: number, ratio: number) {
+  const ratio2 = rect.width / rect.height / ratio;
+  if (ratio2 > 1) {
+    return { width: max, height: ~~((max / ratio) * ratio2) };
+  } else {
+    return { width: ~~(max * ratio2), height: ~~(max / ratio) };
+  }
+}
+
+function asyncAltImageFile2DataUrl(file: File | Blob): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = (e) => resolve(<string>e.target?.result || "");
-    reader.onerror = (e) => reject(e);
+    reader.onload = () => resolve(<string>reader.result);
+    reader.onerror = () => reject(reader.error);
   });
 }
 
@@ -29,4 +49,11 @@ function asyncGetHtmlImageElement(src: string): Promise<HTMLImageElement> {
   });
 }
 
-export { getAssetsImage, asyncAltImageFile2Base64Url, asyncGetImageFileRect, asyncGetHtmlImageElement };
+export {
+  getAssetsImage,
+  resizeRectMax,
+  resizeRectMaxRatio,
+  asyncAltImageFile2DataUrl,
+  asyncGetImageFileRect,
+  asyncGetHtmlImageElement,
+};

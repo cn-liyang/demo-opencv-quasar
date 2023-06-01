@@ -1,4 +1,4 @@
-import { EMimeImageType } from "boot/enums/mime";
+import { EMimeImageType } from "src/types/enums/mime";
 
 function _getOptions(max = 1024) {
   return {
@@ -12,21 +12,21 @@ function _getOptions(max = 1024) {
 async function asyncPicaResizeCanvas2Blob(html: HTMLCanvasElement) {
   const blob = await picaObj.toBlob(html, EMimeImageType.PNG);
   const { width, height } = html;
-  const { toWidth, toHeight } = resizeRectInch6(width, height);
+  const { width: toWidth, height: toHeight } = resizeRectMaxRatio({ width, height }, RECT_PIXEL_512, RECT_RATIO_3VS4);
   return await picaReducer.toBlob(blob, _getOptions(Math.max(toWidth, toHeight)));
 }
 
 async function asyncPicaResizeImageFile2Blob(file: File | Blob) {
-  const base64Url = await asyncAltImageFile2Base64Url(file);
+  const base64Url = await asyncAltImageFile2DataUrl(file);
   const { width, height } = await asyncGetImageFileRect(base64Url);
-  const { toWidth, toHeight } = resizeRectInch6(width, height);
+  const { width: toWidth, height: toHeight } = resizeRectMaxRatio({ width, height }, RECT_PIXEL_512, RECT_RATIO_3VS4);
   return await picaReducer.toBlob(file, _getOptions(Math.max(toWidth, toHeight)));
 }
 
 async function asyncPicaResizeImageFile2Canvas(file: File | Blob) {
-  const base64Url = await asyncAltImageFile2Base64Url(file);
+  const base64Url = await asyncAltImageFile2DataUrl(file);
   const { width, height } = await asyncGetImageFileRect(base64Url);
-  const { toWidth, toHeight } = resizeRectInch6(width, height);
+  const { width: toWidth, height: toHeight } = resizeRectMaxRatio({ width, height }, RECT_PIXEL_512, RECT_RATIO_3VS4);
   return await picaReducer.toCanvas(file, _getOptions(Math.max(toWidth, toHeight)));
 }
 
