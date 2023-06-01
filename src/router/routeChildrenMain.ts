@@ -3,7 +3,7 @@ import { RouteRecordRaw } from "vue-router";
 const routeChildrenMain: RouteRecordRaw[] = [
   {
     path: "01",
-    component: () => import("pages/_0_intro/HelloOpenCVPage.vue"),
+    component: () => import("pages/_0_intro/HelloPage.vue"),
     meta: {
       title: "入门",
       caption: "Hello OpenCV.js",
