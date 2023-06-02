@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const outputId = "outputId";
 
-async function asyncCvIoImageFile(file: File) {
+async function asyncInputImageFile(file: File) {
   const htmlCanvasElement = await asyncPicaResizeImageFile2Canvas(file);
   // The native imread and imshow have the channels stored in BGR order.
   const mat = cvObj.imread(htmlCanvasElement);
@@ -12,7 +12,7 @@ async function asyncCvIoImageFile(file: File) {
 
 <template>
   <div class="column items-center q-gutter-y-md">
-    <InputFileImage @action="asyncCvIoImageFile" />
+    <InputFileImage @action="asyncInputImageFile" />
     <OutputCanvas :id="outputId" />
   </div>
 </template>
