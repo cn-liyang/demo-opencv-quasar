@@ -2,7 +2,7 @@
 const inputId = "inputId";
 const outputId = "outputId";
 
-function doCv() {
+function doIt() {
   const src = cvObj.imread(<HTMLImageElement>document.getElementById(inputId));
   const dst = new cvObj.Mat();
   const M = new cvObj.Mat.ones(5, 5, cvObj.CV_8U);
@@ -16,7 +16,7 @@ function doCv() {
 
 <template>
   <div class="column items-center q-gutter-y-md">
-    <ActionButton @action="doCv" />
+    <ActionButton @action="doIt" />
     <InputImage :id="inputId" :src="$getAssetsImage('star.png')" />
     <OutputCanvas :id="outputId" />
   </div>

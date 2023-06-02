@@ -3,7 +3,7 @@ const inputId = "inputId";
 const inputTplId = "inputTplId";
 const outputId = "outputId";
 
-function doCv() {
+function doIt() {
   const src = cvObj.imread(<HTMLImageElement>document.getElementById(inputId));
   const tpl = cvObj.imread(<HTMLImageElement>document.getElementById(inputTplId));
   const dst = new cvObj.Mat();
@@ -23,7 +23,7 @@ function doCv() {
 
 <template>
   <div class="column items-center q-gutter-y-md">
-    <ActionButton @action="doCv" />
+    <ActionButton @action="doIt" />
     <InputImage :id="inputId" :src="$getAssetsImage('lena.png')" />
     <InputImage :id="inputTplId" :src="$getAssetsImage('lena-tpl.png')" />
     <OutputCanvas :id="outputId" />
